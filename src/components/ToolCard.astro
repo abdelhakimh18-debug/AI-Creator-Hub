@@ -17,7 +17,7 @@ const rating = getOverallRating(d.subScores);
   <p class="text-body text-text2 mb-2">{d.shortDescription}</p>
   <div class="flex items-center justify-between text-small mb-3">
     <span>{d.hasFreePlan ? 'Free plan' : `From $${d.startingPrice}`}</span>
-    <span class="font-semibold">{rating}/10</span>
+    <span class="font-semibold">{rating !== null ? `${rating}/10` : 'Pending'}</span>
   </div>
   <div class="flex gap-2">
     <a href={`/tools/${d.category}/${tool.slug}/`} class="flex-1 text-center bg-accent text-white rounded-btn py-2 text-small">Review</a>
