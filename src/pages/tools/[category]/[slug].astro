@@ -1,5 +1,5 @@
 ---
-import { getCollection, type CollectionEntry } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import { getOverallRating } from '../../../lib/rating';
 import Layout from '../../../layouts/Layout.astro';
 
@@ -11,50 +11,175 @@ export async function getStaticPaths() {
   }));
 }
 
-interface Props { tool: CollectionEntry<'tools'> }
 const { tool } = Astro.props;
 const { Content } = await tool.render();
 const d = tool.data;
 const rating = getOverallRating(d.subScores);
+const hasTesting = d.ourTestPrompts.length > 0;
+const alternatives = await Promise.all((d.alternatives ?? []).map((ref) => getEntry(ref)));
 ---
-<Layout title={`${d.toolName} Review`} noindex={d.isDemo}>
+<Layout title={`${d.toolName} — AI Tool Profile`} noindex={d.isDemo}>
   {d.isDemo && (
     <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
   )}
+
   <main class="max-w-3xl mx-auto px-3 py-5">
+    <!-- Breadcrumbs -->
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <a href="/tools/">Tools</a> / <a href={`/tools/${d.category}/`} class="capitalize">{d.category}</a> / <span>{d.toolName}</span>
+    </nav>
+
     <p class="text-small text-text2 uppercase">{d.category}</p>
     <h1 class="text-h1">{d.toolName}</h1>
-    <p class="text-body mt-2">{d.quickVerdict}</p>
+    <p class="text-body text-text2 mt-1">{d.shortDescription}</p>
 
-    <div class="flex gap-4 my-4 items-center">
-      <span class="font-semibold text-h3">{rating}/10</span>
-      <span>{d.hasFreePlan ? 'Free plan available' : `From $${d.startingPrice}`}</span>
+    <!-- Quick verdict -->
+    <div class="bg-surface border border-border rounded-card p-3 mt-4">
+      <p class="text-small text-text2 uppercase mb-1">Quick Verdict</p>
+      <p class="text-body">{d.quickVerdict}</p>
+      <p class="text-small text-text2 mt-2">Data last verified: {d.lastTestedDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
     </div>
 
-    <section class="grid grid-cols-2 gap-4 my-5">
-      {Object.entries(d.subScores).map(([k, v]) => (
-        <div>
-          <p class="text-small text-text2 capitalize">{k}</p>
-          <div class="h-2 bg-border rounded"><div class="h-2 bg-accent rounded" style={`width:${v * 10}%`}></div></div>
+    <!-- Rating -->
+    <div class="flex gap-4 my-4 items-center">
+      <span class="font-semibold text-h3">
+        {rating !== null ? `${rating}/10` : 'Rating: Pending'}
+      </span>
+      <span>{d.hasFreePlan ? 'Free plan available' : `From $${d.startingPrice}/mo`}</span>
+    </div>
+
+    <!-- Pricing -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Pricing</h2>
+      {d.pricingTiers.length > 0 ? (
+        <div class="flex flex-col gap-2">
+          {d.pricingTiers.map((tier) => (
+            <div class="border border-border rounded-card p-2">
+              <p class="font-semibold">{tier.tierName} — {tier.price === 0 ? 'Free' : `$${tier.price}/${tier.billingPeriod}`}</p>
+              {tier.features && <p class="text-small text-text2">{tier.features}</p>}
+            </div>
+          ))}
         </div>
-      ))}
+      ) : (
+        <p class="text-body text-text2">Pricing details pending verification.</p>
+      )}
     </section>
 
-    <div class="grid grid-cols-2 gap-4 my-5">
-      <div>
-        <h2 class="text-h3 mb-2">Pros</h2>
-        <ul class="list-disc pl-4">{d.pros.map((p) => <li>{p}</li>)}</ul>
-      </div>
-      <div>
-        <h2 class="text-h3 mb-2">Cons</h2>
-        <ul class="list-disc pl-4">{d.cons.map((c) => <li>{c}</li>)}</ul>
-      </div>
-    </div>
+    <!-- Free plan -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Free Plan / Trial</h2>
+      <p class="text-body">
+        {d.hasFreePlan && 'This tool offers a permanent free plan.'}
+        {!d.hasFreePlan && d.hasFreeTrial && 'This tool offers a free trial (no permanent free plan).'}
+        {!d.hasFreePlan && !d.hasFreeTrial && 'No free plan or trial is currently offered.'}
+      </p>
+    </section>
+
+    <!-- Features -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Key Features</h2>
+      <ul class="list-disc pl-5">
+        {d.features.map((f) => <li>{f}</li>)}
+      </ul>
+    </section>
+
+    <!-- Best for -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Best For</h2>
+      <ul class="list-disc pl-5">
+        {d.bestFor.map((b) => <li>{b}</li>)}
+      </ul>
+    </section>
+
+    <!-- Commercial use / watermark -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Commercial Use & Watermark</h2>
+      <p class="text-body">Commercial use: {d.commercialUse ? 'Available (see note)' : 'Not available / restricted'}</p>
+      {d.commercialUseNote && <p class="text-small text-text2 mt-1">{d.commercialUseNote}</p>}
+      <p class="text-body mt-2">Watermark on free/base output: {d.watermark ? 'Yes' : 'No'}</p>
+    </section>
+
+    <!-- Pros / Cons -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Pros & Cons</h2>
+      {(d.pros.length > 0 || d.cons.length > 0) ? (
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <p class="font-semibold mb-1">Pros</p>
+            <ul class="list-disc pl-4">{d.pros.map((p) => <li>{p}</li>)}</ul>
+          </div>
+          <div>
+            <p class="font-semibold mb-1">Cons</p>
+            <ul class="list-disc pl-4">{d.cons.map((c) => <li>{c}</li>)}</ul>
+          </div>
+        </div>
+      ) : (
+        <p class="text-body text-text2">Pending — genuine pros/cons will be added after hands-on testing.</p>
+      )}
+    </section>
+
+    <!-- First-hand testing -->
+    <section class="my-5 border border-border rounded-card p-3 bg-surface">
+      <h2 class="text-h3 mb-2">Our Testing</h2>
+      {hasTesting ? (
+        <div class="flex flex-col gap-3">
+          {d.ourTestPrompts.map((t) => (
+            <div>
+              <p class="font-semibold text-small">Prompt:</p>
+              <p class="text-body">{t.promptText}</p>
+              {t.notes && <p class="text-small text-text2 mt-1">{t.notes}</p>}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-body text-text2">Testing in progress — this profile is based on officially verified information. Hands-on test results will be added once testing is complete.</p>
+      )}
+    </section>
+
+    <!-- Alternatives -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Alternatives</h2>
+      {alternatives.length > 0 ? (
+        <ul class="list-disc pl-5">
+          {alternatives.map((alt) => (
+            <li><a href={`/tools/${alt.data.category}/${alt.slug}/`} class="text-accent">{alt.data.toolName}</a></li>
+          ))}
+        </ul>
+      ) : (
+        <p class="text-body text-text2">No alternatives linked yet.</p>
+      )}
+    </section>
+
+    <!-- Related content -->
+    <section class="my-5">
+      <h2 class="text-h3 mb-2">Related Content</h2>
+      <p class="text-body text-text2">Related guides and comparisons will appear here once published.</p>
+    </section>
+
+    <!-- FAQ -->
+    {d.faq.length > 0 && (
+      <section class="my-5">
+        <h2 class="text-h3 mb-2">FAQ</h2>
+        <div class="flex flex-col gap-3">
+          {d.faq.map((item) => (
+            <div>
+              <p class="font-semibold">{item.question}</p>
+              <p class="text-body text-text2">{item.answer}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
 
     <section class="prose max-w-none my-5"><Content /></section>
 
-    <a href={d.websiteUrl} rel="nofollow sponsored" class="inline-block bg-accent text-white rounded-btn px-4 py-2">
-      Visit Website ↗
+    <!-- Affiliate disclosure (only if a real affiliate URL exists) -->
+    {d.affiliateUrl && (
+      <p class="text-small text-text2 mb-2">This page may contain an affiliate link. We may earn a commission at no extra cost to you.</p>
+    )}
+
+    <a href={d.affiliateUrl ?? d.websiteUrl} rel="nofollow sponsored" class="inline-block bg-accent text-white rounded-btn px-4 py-2">
+      Visit Official Website ↗
     </a>
   </main>
 </Layout>
