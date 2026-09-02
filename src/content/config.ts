@@ -1,6 +1,5 @@
 import { defineCollection, reference, z } from 'astro:content';
 
-// ---- shared sub-schemas ----
 const pricingTier = z.object({
   tierName: z.string(),
   price: z.number(),
@@ -16,17 +15,20 @@ const subScores = z.object({
   value: z.number().min(0).max(10),
   creatorUsefulness: z.number().min(0).max(10),
 });
-// overall_rating غير مخزَّن هنا — يُحسب وقت البناء عبر src/lib/rating.ts
 
 const testPrompt = z.object({
   promptText: z.string(),
-  outputMedia: z.string().optional(), // مسار صورة/فيديو
+  outputMedia: z.string().optional(),
   notes: z.string().optional(),
 });
 
-// ---- collections ----
+const faqItem = z.object({
+  question: z.string(),
+  answer: z.string(),
+});
+
 const tools = defineCollection({
-  type: 'content', // Markdown + frontmatter
+  type: 'content',
   schema: z.object({
     toolName: z.string(),
     category: z.enum(['video', 'audio', 'image', 'editing', 'ugc', 'productivity']),
@@ -39,7 +41,8 @@ const tools = defineCollection({
     startingPrice: z.number(),
     hasFreePlan: z.boolean().default(false),
     hasFreeTrial: z.boolean().default(false),
-    subScores: subScores,
+    // ⚠️ أصبح اختياريًا: لا نجبر أي أداة حقيقية على تقييمات مُختلَقة قبل الاختبار الفعلي
+    subScores: subScores.optional(),
     features: z.array(z.string()).default([]),
     platforms: z.array(z.enum(['web', 'ios', 'android', 'desktop', 'api'])).default([]),
     apiAvailable: z.boolean().default(false),
@@ -56,8 +59,10 @@ const tools = defineCollection({
     cons: z.array(z.string()).default([]),
     alternatives: z.array(reference('tools')).default([]),
     relatedGuides: z.array(reference('guides')).default([]),
-    isDemo: z.boolean().default(true), // ⚠️ افتراضي true طوال مرحلة الـPrototype
+    isDemo: z.boolean().default(true),
     isSponsored: z.boolean().default(false),
+    // ⚠️ حقل جديد إضافي فقط: لم يكن موجودًا، مطلوب لبنية الصفحة الحقيقية (FAQ)
+    faq: z.array(faqItem).default([]),
   }),
 });
 
