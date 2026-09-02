@@ -1,0 +1,42 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import ToolCard from '../../../components/ToolCard.astro';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('bestOf');
+  return entries.map((b) => ({ params: { slug: b.slug }, props: { entry: b } }));
+}
+
+interface Props { entry: Awaited<ReturnType<typeof getCollection<'bestOf'>>>[number] }
+const { entry } = Astro.props;
+const d = entry.data;
+
+const resolved = await Promise.all(
+  [...d.includedTools]
+    .sort((a, b) => a.rankPosition - b.rankPosition)
+    .map(async (item) => ({
+      tool: await getEntry(item.tool),
+      whyIncluded: item.whyIncluded,
+      rankPosition: item.rankPosition,
+    }))
+);
+---
+<Layout title={d.title} noindex={d.isDemo}>
+  {d.isDemo && (
+    <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
+  )}
+  <main class="max-w-3xl mx-auto px-3 py-5">
+    <h1 class="text-h1">{d.title}</h1>
+    <p class="text-body mt-2">{d.introSummary}</p>
+    <div class="mt-5 flex flex-col gap-4">
+      {resolved.map(({ tool, whyIncluded, rankPosition }) => (
+        <div>
+          <p class="text-small text-text2">#{rankPosition}</p>
+          <ToolCard tool={tool} />
+          <p class="text-body text-text2 mt-1">{whyIncluded}</p>
+        </div>
+      ))}
+    </div>
+  </main>
+</Layout>

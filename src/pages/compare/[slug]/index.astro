@@ -1,0 +1,48 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const comparisons = await getCollection('comparisons');
+  return comparisons.map((c) => ({ params: { slug: c.slug }, props: { comparison: c } }));
+}
+
+interface Props { comparison: Awaited<ReturnType<typeof getCollection<'comparisons'>>>[number] }
+const { comparison } = Astro.props;
+const d = comparison.data;
+const toolA = await getEntry(d.toolA);
+const toolB = await getEntry(d.toolB);
+---
+<Layout title={`${toolA.data.toolName} vs ${toolB.data.toolName}`} noindex={d.isDemo}>
+  {d.isDemo && (
+    <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
+  )}
+  <main class="max-w-3xl mx-auto px-3 py-5">
+    <h1 class="text-h1">{toolA.data.toolName} vs {toolB.data.toolName}</h1>
+    <p class="text-body mt-2">{d.comparisonSummary}</p>
+
+    <table class="w-full mt-5 border border-border rounded-card overflow-hidden text-body">
+      <thead>
+        <tr class="bg-surface">
+          <th class="p-2 text-left"></th>
+          <th class="p-2 text-left">{toolA.data.toolName}</th>
+          <th class="p-2 text-left">{toolB.data.toolName}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t border-border">
+          <td class="p-2">Starting Price</td>
+          <td class="p-2">${toolA.data.startingPrice}</td>
+          <td class="p-2">${toolB.data.startingPrice}</td>
+        </tr>
+        <tr class="border-t border-border">
+          <td class="p-2">Free Plan</td>
+          <td class="p-2">{toolA.data.hasFreePlan ? 'Yes' : 'No'}</td>
+          <td class="p-2">{toolB.data.hasFreePlan ? 'Yes' : 'No'}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="mt-5 font-semibold">Winner: {d.winnerOverall}</p>
+  </main>
+</Layout>

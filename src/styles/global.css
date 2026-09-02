@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Inter Variable يُستضاف محليًا لاحقًا في /public/fonts — لا CDN خارجي (قرار الأداء المعتمد) */
+
+body {
+  @apply bg-bg text-text font-sans text-body;
+}

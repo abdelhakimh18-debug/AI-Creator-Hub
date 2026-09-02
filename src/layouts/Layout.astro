@@ -1,0 +1,16 @@
+---
+import '../styles/global.css';
+interface Props { title: string; noindex?: boolean }
+const { title, noindex = false } = Astro.props;
+---
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>{title}</title>
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
+</head>
+<body>
+  <slot />
+</body>
+</html>

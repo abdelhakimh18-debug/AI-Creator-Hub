@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../../layouts/Layout.astro';
+import ToolCard from '../../../components/ToolCard.astro';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  const categories = [...new Set(tools.map((t) => t.data.category))];
+  return categories.map((category) => ({
+    params: { category },
+    props: { tools: tools.filter((t) => t.data.category === category) },
+  }));
+}
+
+interface Props { tools: Awaited<ReturnType<typeof getCollection<'tools'>>> }
+const { tools } = Astro.props;
+const { category } = Astro.params;
+const hasDemo = tools.some((t) => t.data.isDemo);
+---
+<Layout title={`Best ${category} AI Tools`} noindex={hasDemo}>
+  <main class="max-w-5xl mx-auto px-3 py-6">
+    <h1 class="text-h1 capitalize mb-4">{category} AI Tools</h1>
+    <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-4 gap-3">
+      {tools.map((tool) => <ToolCard tool={tool} />)}
+    </div>
+  </main>
+</Layout>

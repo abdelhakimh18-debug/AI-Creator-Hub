@@ -1,0 +1,60 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { getOverallRating } from '../../../lib/rating';
+import Layout from '../../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  return tools.map((tool) => ({
+    params: { category: tool.data.category, slug: tool.slug },
+    props: { tool },
+  }));
+}
+
+interface Props { tool: CollectionEntry<'tools'> }
+const { tool } = Astro.props;
+const { Content } = await tool.render();
+const d = tool.data;
+const rating = getOverallRating(d.subScores);
+---
+<Layout title={`${d.toolName} Review`} noindex={d.isDemo}>
+  {d.isDemo && (
+    <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
+  )}
+  <main class="max-w-3xl mx-auto px-3 py-5">
+    <p class="text-small text-text2 uppercase">{d.category}</p>
+    <h1 class="text-h1">{d.toolName}</h1>
+    <p class="text-body mt-2">{d.quickVerdict}</p>
+
+    <div class="flex gap-4 my-4 items-center">
+      <span class="font-semibold text-h3">{rating}/10</span>
+      <span>{d.hasFreePlan ? 'Free plan available' : `From $${d.startingPrice}`}</span>
+    </div>
+
+    <section class="grid grid-cols-2 gap-4 my-5">
+      {Object.entries(d.subScores).map(([k, v]) => (
+        <div>
+          <p class="text-small text-text2 capitalize">{k}</p>
+          <div class="h-2 bg-border rounded"><div class="h-2 bg-accent rounded" style={`width:${v * 10}%`}></div></div>
+        </div>
+      ))}
+    </section>
+
+    <div class="grid grid-cols-2 gap-4 my-5">
+      <div>
+        <h2 class="text-h3 mb-2">Pros</h2>
+        <ul class="list-disc pl-4">{d.pros.map((p) => <li>{p}</li>)}</ul>
+      </div>
+      <div>
+        <h2 class="text-h3 mb-2">Cons</h2>
+        <ul class="list-disc pl-4">{d.cons.map((c) => <li>{c}</li>)}</ul>
+      </div>
+    </div>
+
+    <section class="prose max-w-none my-5"><Content /></section>
+
+    <a href={d.websiteUrl} rel="nofollow sponsored" class="inline-block bg-accent text-white rounded-btn px-4 py-2">
+      Visit Website ↗
+    </a>
+  </main>
+</Layout>

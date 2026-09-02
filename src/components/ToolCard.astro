@@ -1,0 +1,26 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getOverallRating } from '../lib/rating';
+
+interface Props { tool: CollectionEntry<'tools'> }
+const { tool } = Astro.props;
+const d = tool.data;
+const rating = getOverallRating(d.subScores);
+---
+<div class="border border-border rounded-card bg-surface p-3 relative hover:shadow-md transition-shadow">
+  {d.isDemo && (
+    <span class="absolute top-2 right-2 text-small bg-demo text-white px-2 py-0.5 rounded">DEMO</span>
+  )}
+  <img src={d.logo} alt={d.toolName} class="h-10 mb-2" loading="lazy" width="120" height="40" />
+  <p class="text-small text-text2 uppercase mb-1">{d.category}</p>
+  <h3 class="text-h3 mb-1">{d.toolName}</h3>
+  <p class="text-body text-text2 mb-2">{d.shortDescription}</p>
+  <div class="flex items-center justify-between text-small mb-3">
+    <span>{d.hasFreePlan ? 'Free plan' : `From $${d.startingPrice}`}</span>
+    <span class="font-semibold">{rating}/10</span>
+  </div>
+  <div class="flex gap-2">
+    <a href={`/tools/${d.category}/${tool.slug}/`} class="flex-1 text-center bg-accent text-white rounded-btn py-2 text-small">Review</a>
+    <a href={`/tools/${d.category}/`} class="flex-1 text-center border border-border rounded-btn py-2 text-small">Browse {d.category}</a>
+  </div>
+</div>
