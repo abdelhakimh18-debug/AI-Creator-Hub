@@ -44,7 +44,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["runway", "google-veo-3"]
-relatedGuides: []
+relatedGuides: ["best-ai-video-generator-for-youtube"]
 isDemo: false
 isSponsored: false
 faq:

@@ -46,7 +46,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: []
-relatedGuides: []
+relatedGuides: ["how-to-make-ai-avatar-videos-with-heygen"]
 isDemo: false
 isSponsored: false
 faq:

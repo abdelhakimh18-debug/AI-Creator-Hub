@@ -5,7 +5,7 @@ difficultyLevel: "intermediate"
 estimatedTime: "20 minutes"
 relatedTools:
   - "google-veo-3"
-isDemo: true
+isDemo: false
 ---
 
 # How to Create AI Videos with Google Veo 3

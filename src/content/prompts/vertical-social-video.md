@@ -1,7 +1,8 @@
 ---
 promptText: "Vertical 9:16 social media video about [TOPIC], immediate visual hook, [SUBJECT] performs [ACTION], fast but readable pacing, clear focal point, clean composition for mobile viewing, natural camera movement, captions-safe framing, strong ending beat, polished commercial look, photorealistic, no watermark."
 category: "Social Media Prompts"
-isDemo: true
+relatedTool: "kling-ai"
+isDemo: false
 ---
 
 # Vertical Social Video Prompt

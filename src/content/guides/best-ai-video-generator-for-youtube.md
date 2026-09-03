@@ -7,7 +7,7 @@ relatedTools:
   - "runway"
   - "kling-ai"
   - "google-veo-3"
-isDemo: true
+isDemo: false
 ---
 
 # Best AI Video Generator for YouTube

@@ -5,7 +5,7 @@ difficultyLevel: "beginner"
 estimatedTime: "15 minutes"
 relatedTools:
   - "heygen"
-isDemo: true
+isDemo: false
 ---
 
 # How to Make AI Avatar Videos with HeyGen

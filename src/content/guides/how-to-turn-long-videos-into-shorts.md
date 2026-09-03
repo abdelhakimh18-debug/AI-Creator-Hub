@@ -5,7 +5,7 @@ difficultyLevel: "beginner"
 estimatedTime: "15 minutes"
 relatedTools:
   - "opus-clip"
-isDemo: true
+isDemo: false
 ---
 
 # How to Turn Long Videos into Shorts with Opus Clip

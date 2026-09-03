@@ -1,7 +1,8 @@
 ---
 promptText: "Photorealistic [SUBJECT] in [LOCATION], [ERA OR CONTEXT], precise material and skin detail, natural environmental lighting, realistic depth and perspective, coherent anatomy, authentic wardrobe and props, cinematic composition, subtle atmospheric detail, high visual fidelity, no modern objects, no text, no watermark."
 category: "Image Prompts"
-isDemo: true
+relatedTool: "midjourney"
+isDemo: false
 ---
 
 # Photorealistic Image Prompt

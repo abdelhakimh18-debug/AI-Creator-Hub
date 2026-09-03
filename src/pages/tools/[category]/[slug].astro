@@ -17,6 +17,7 @@ const d = tool.data;
 const rating = getOverallRating(d.subScores);
 const hasTesting = d.ourTestPrompts.length > 0;
 const alternatives = await Promise.all((d.alternatives ?? []).map((ref) => getEntry(ref)));
+const relatedGuides = await Promise.all((d.relatedGuides ?? []).map((ref) => getEntry(ref)));
 
 // Related content: pulled live from the data model, not hardcoded
 const allComparisons = await getCollection('comparisons');
@@ -156,11 +157,14 @@ const relatedBestOf = allBestOf.filter((b) =>
       )}
     </section>
 
-    <!-- Related content: now data-driven, pulled from comparisons/bestOf collections -->
+    <!-- Related content: now data-driven, pulled from guides/comparisons/bestOf collections -->
     <section class="my-5">
       <h2 class="text-h3 mb-2">Related Content</h2>
-      {(relatedComparisons.length > 0 || relatedBestOf.length > 0) ? (
+      {(relatedGuides.length > 0 || relatedComparisons.length > 0 || relatedBestOf.length > 0) ? (
         <ul class="list-disc pl-5">
+          {relatedGuides.map((g) => (
+            <li><a href={`/guides/${g.slug}/`} class="text-accent">{g.data.title}</a></li>
+          ))}
           {relatedComparisons.map((c) => (
             <li><a href={`/compare/${c.slug}/`} class="text-accent">{c.toolA.data.toolName} vs {c.toolB.data.toolName}</a></li>
           ))}

@@ -42,7 +42,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: []
-relatedGuides: []
+relatedGuides: ["how-to-turn-long-videos-into-shorts"]
 isDemo: false
 isSponsored: false
 faq:

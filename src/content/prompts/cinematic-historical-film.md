@@ -2,7 +2,7 @@
 promptText: "Cinematic historical film shot, [SUBJECT] in [LOCATION] during [ERA], historically accurate clothing and architecture, [ACTION], dramatic natural lighting, realistic skin and materials, period-accurate props, atmospheric depth, cinematic composition, subtle camera movement, photorealistic, no modern objects, no text, no watermark."
 category: "Cinematic Prompts"
 relatedTool: "google-veo-3"
-isDemo: true
+isDemo: false
 ---
 
 # Cinematic Historical Film Prompt

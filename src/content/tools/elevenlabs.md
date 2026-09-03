@@ -55,7 +55,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: []
-relatedGuides: []
+relatedGuides: ["how-to-create-ai-voiceovers-with-elevenlabs"]
 isDemo: false
 isSponsored: false
 faq:
