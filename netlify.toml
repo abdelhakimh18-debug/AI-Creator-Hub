@@ -1,9 +1,3 @@
 [build]
   command = "npm run build"
   publish = "dist"
-
-# ⚠️ يُحذف هذا القسم بالكامل عند الإطلاق الفعلي (بعد استبدال محتوى الـDemo)
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex, nofollow"

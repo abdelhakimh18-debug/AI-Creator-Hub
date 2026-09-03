@@ -58,10 +58,14 @@ PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 ```
 دون هذا المتغير، لا يُحمَّل أي سكربت تتبع إطلاقًا.
 
-## ⚠️ قبل الإطلاق الفعلي (Checklist)
-- [x] `site` في `astro.config.mjs` مضبوط على `https://creatoriahub.com` (يؤثر على sitemap وcanonical وOpen Graph) — تأكد أن الدومين مُشترى ومربوط بـNetlify فعليًا قبل الإطلاق.
+## ✅ الإطلاق الفعلي
+تم الإطلاق. الدومين `creatoriahub.com` مُشترى ومربوط بـNetlify، وكل خطوات الـ checklist أُنجزت:
+- [x] `site` في `astro.config.mjs` مضبوط على `https://creatoriahub.com`.
 - [x] سطر `Sitemap:` في `public/robots.txt` مضبوط على نفس الدومين.
-- [ ] احذف `Disallow: /` من `public/robots.txt` (اتركه Allow بشكل افتراضي، أو حدد استثناءات إن لزم).
-- [ ] احذف قسم `[[headers]] X-Robots-Tag` بالكامل من `netlify.toml`.
-- [ ] تأكد أن كل محتوى حقيقي جديد يحمل `isDemo: false` صراحةً (راجع القسم أعلاه).
-- [ ] فعّل `PUBLIC_GA_MEASUREMENT_ID` إن رغبتم بالتتبع من أول يوم.
+- [x] `public/robots.txt` أصبح `Allow: /` بدل `Disallow: /`.
+- [x] قسم `[[headers]] X-Robots-Tag` حُذف بالكامل من `netlify.toml`.
+- [x] لا يوجد أي محتوى `isDemo: true` متبقٍ في الموقع.
+
+**تذكير دائم (وليس خطوة لمرة واحدة)**: أي محتوى جديد يجب أن يحمل `isDemo: false` صراحةً في الـfrontmatter (راجع القسم أعلاه) — وإلا سيُعامَل تلقائيًا كمحتوى تجريبي.
+
+فعّل `PUBLIC_GA_MEASUREMENT_ID` إن رغبتم بتتبع Analytics (اختياري، انظر القسم أعلاه).
