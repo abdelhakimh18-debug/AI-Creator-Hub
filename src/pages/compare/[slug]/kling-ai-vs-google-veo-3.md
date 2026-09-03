@@ -5,5 +5,4 @@ comparisonSummary: "Kling AI and Google Veo 3 are both AI video generators with 
 winnerOverall: depends
 isDemo: false
 ---
-
 Both tools' exact live pricing needs a final re-check at time of publishing — see each tool's profile for details.
