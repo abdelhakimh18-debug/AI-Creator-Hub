@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
+import { slugify } from '../../lib/slugify';
 
 const prompts = await getCollection('prompts');
 const hasDemo = prompts.some((p) => p.data.isDemo);
@@ -24,7 +25,9 @@ const categories = [...new Set(prompts.map((p) => p.data.category))];
     <h1 class="text-h1 mb-2">AI Prompt Library</h1>
     <p class="text-body text-text2 mb-6">Ready-to-adapt prompts for video, cinematic, advertising, YouTube, and social content workflows.</p>
     <div class="flex flex-wrap gap-2 mb-6">
-      {categories.map((category) => <span class="text-small border border-border rounded px-2 py-1">{category}</span>)}
+      {categories.map((category) => (
+        <a href={`/prompts/category/${slugify(category)}/`} class="text-small border border-border rounded px-2 py-1 hover:bg-surface">{category}</a>
+      ))}
     </div>
     <div class="flex flex-col gap-3">
       {prompts.map((prompt) => (
