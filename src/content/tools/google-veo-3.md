@@ -38,7 +38,7 @@ quickVerdict: "⚠️ Google restructured AI subscription pricing around Google 
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["runway", "kling-ai"]
+alternatives: ["runway", "kling-ai", "luma-dream-machine"]
 relatedGuides: ["best-ai-video-generator-for-youtube", "how-to-create-ai-videos-with-veo-3"]
 isDemo: false
 isSponsored: false

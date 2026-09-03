@@ -11,6 +11,9 @@ const rating = getOverallRating(d.subScores);
   {d.isDemo && (
     <span class="absolute top-2 right-2 text-small bg-demo text-white px-2 py-0.5 rounded">DEMO</span>
   )}
+  {d.reviewStatus === 'community' && (
+    <span class="absolute top-2 left-2 text-small bg-warning text-white px-2 py-0.5 rounded" title="Pricing and features compiled from third-party sources, not yet verified directly against the official site">Community-sourced</span>
+  )}
   <img src={d.logo} alt={d.toolName} class="h-10 mb-2" loading="lazy" width="120" height="40" />
   <p class="text-small text-text2 uppercase mb-1">{d.category}</p>
   <h3 class="text-h3 mb-1">{d.toolName}</h3>

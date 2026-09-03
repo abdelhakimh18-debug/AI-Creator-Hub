@@ -43,7 +43,7 @@ quickVerdict: "⚠️ Kling AI's official pricing page is JavaScript-rendered an
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["runway", "google-veo-3"]
+alternatives: ["runway", "google-veo-3", "luma-dream-machine"]
 relatedGuides: ["best-ai-video-generator-for-youtube"]
 isDemo: false
 isSponsored: false

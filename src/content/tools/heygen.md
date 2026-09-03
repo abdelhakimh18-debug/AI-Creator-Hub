@@ -45,7 +45,7 @@ quickVerdict: "Data verified directly from heygen.com/pricing. Hands-on testing 
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: []
+alternatives: ["synthesia"]
 relatedGuides: ["how-to-make-ai-avatar-videos-with-heygen"]
 isDemo: false
 isSponsored: false

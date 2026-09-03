@@ -43,7 +43,7 @@ quickVerdict: "⚠️ Adobe's own pricing pages showed two different prices for 
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["midjourney"]
+alternatives: ["midjourney", "leonardo-ai"]
 relatedGuides: []
 isDemo: false
 isSponsored: false

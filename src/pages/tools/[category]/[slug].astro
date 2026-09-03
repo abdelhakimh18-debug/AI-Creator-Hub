@@ -68,6 +68,9 @@ const faqJsonLd = d.faq.length > 0 ? {
   {d.isDemo && (
     <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
   )}
+  {!d.isDemo && d.reviewStatus === 'community' && (
+    <div class="bg-warning text-white text-center py-1 text-small">Community-sourced data — compiled from third-party sources, not yet verified directly against the official site</div>
+  )}
 
   <main class="max-w-3xl mx-auto px-3 py-5">
     <nav class="text-small text-text2 mb-4">
