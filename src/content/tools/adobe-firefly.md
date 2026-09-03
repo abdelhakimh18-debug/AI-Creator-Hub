@@ -53,5 +53,4 @@ faq:
   - question: "Does Adobe Firefly have its own affiliate program?"
     answer: "Not yet fully — a Firefly-specific Creator Affiliate Program is listed as \"Coming Soon\" (waitlist only) as of this writing. Adobe's general Creative Cloud affiliate program exists separately and is not Firefly-specific."
 ---
-
 Testing in progress. Two data points on this profile (Pro tier price, Firefly-specific affiliate status) need a final live re-check before publishing.
