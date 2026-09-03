@@ -1,14 +1,65 @@
 ---
 import '../styles/global.css';
-interface Props { title: string; noindex?: boolean }
-const { title, noindex = false } = Astro.props;
+
+interface Props {
+  title: string;
+  /** Meta/OG description — required so every page ships one deliberately, not by accident. */
+  description: string;
+  noindex?: boolean;
+  /** Open Graph type. Use 'article' for a single tool/guide/prompt/comparison, 'website' for listings. */
+  type?: 'website' | 'article';
+  /** One or more JSON-LD objects (e.g. BreadcrumbList, FAQPage) to embed as <script type="application/ld+json">. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { title, description, noindex = false, type = 'website', jsonLd } = Astro.props;
+
+const siteName = 'AI Creator Hub';
+const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
-  <title>{title}</title>
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow'} />
+
+  <meta property="og:site_name" content={siteName} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content={type} />
+  <meta property="og:url" content={canonicalURL} />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+
+  {jsonLdBlocks.map((block) => (
+    <script type="application/ld+json" set:html={JSON.stringify(block)} />
+  ))}
+
+  <!--
+    Analytics is opt-in and off by default: no tracking ID is hardcoded here.
+    Set PUBLIC_GA_MEASUREMENT_ID (Netlify env var or .env) to a real GA4
+    measurement ID (e.g. G-XXXXXXXXXX) to turn it on — no code change needed.
+  -->
+  {gaId && (
+    <>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
+      <script define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', gaId);
+      </script>
+    </>
+  )}
 </head>
 <body>
   <slot />

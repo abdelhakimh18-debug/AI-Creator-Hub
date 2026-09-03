@@ -6,7 +6,19 @@ const tools = await getCollection('tools');
 const categories = [...new Set(tools.map((t) => t.data.category))].sort();
 const hasDemo = tools.some((t) => t.data.isDemo);
 ---
-<Layout title="AI Tools Directory" noindex={hasDemo}>
+<Layout
+  title="AI Tools Directory"
+  description="Browse AI tools for creators by category — video, audio, image, editing, UGC, and productivity."
+  noindex={hasDemo}
+  jsonLd={{
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+      { '@type': 'ListItem', position: 2, name: 'Tools', item: new URL('/tools/', Astro.site).toString() },
+    ],
+  }}
+>
   <main class="max-w-5xl mx-auto px-3 py-6">
     <nav class="text-small text-text2 mb-4">
       <a href="/">Home</a> / <span>Tools</span>

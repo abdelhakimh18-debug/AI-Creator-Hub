@@ -6,7 +6,11 @@ import ToolCard from '../components/ToolCard.astro';
 const tools = await getCollection('tools');
 const hasDemo = tools.some((t) => t.data.isDemo);
 ---
-<Layout title="AI Creator Hub" noindex={hasDemo}>
+<Layout
+  title="AI Creator Hub"
+  description="Discover, compare, and learn the AI tools that help you create better videos, images, audio, and content."
+  noindex={hasDemo}
+>
   <section class="text-center py-7 px-3 bg-bg">
     <h1 class="text-h1">Discover the Best AI Tools for Creators</h1>
     <p class="text-body text-text2 mt-2 max-w-xl mx-auto">

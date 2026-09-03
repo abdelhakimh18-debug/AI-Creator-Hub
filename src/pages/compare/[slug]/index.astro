@@ -20,8 +20,24 @@ const rows = [
   { label: 'Platforms', a: toolA.data.platforms.join(', '), b: toolB.data.platforms.join(', ') },
   { label: 'Watermark (base/free tier)', a: toolA.data.watermark ? 'Yes' : 'No', b: toolB.data.watermark ? 'Yes' : 'No' },
 ];
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 2, name: 'Compare', item: new URL('/compare/', Astro.site).toString() },
+    { '@type': 'ListItem', position: 3, name: `${toolA.data.toolName} vs ${toolB.data.toolName}`, item: new URL(`/compare/${comparison.slug}/`, Astro.site).toString() },
+  ],
+};
 ---
-<Layout title={`${toolA.data.toolName} vs ${toolB.data.toolName} — Spec Comparison`} noindex={d.isDemo}>
+<Layout
+  title={`${toolA.data.toolName} vs ${toolB.data.toolName} — Spec Comparison`}
+  description={d.comparisonSummary}
+  noindex={d.isDemo}
+  type="article"
+  jsonLd={breadcrumbJsonLd}
+>
   {d.isDemo && (
     <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
   )}
