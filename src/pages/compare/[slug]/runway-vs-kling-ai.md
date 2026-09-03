@@ -5,5 +5,4 @@ comparisonSummary: "Runway and Kling AI are both AI video generation tools offer
 winnerOverall: depends
 isDemo: false
 ---
-
 Both tools are evolving quickly; verify current pricing on the official sites before making a purchase decision.
