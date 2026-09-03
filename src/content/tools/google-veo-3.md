@@ -3,7 +3,7 @@ toolName: "Google Veo 3"
 category: video
 bestFor: ["AI video with synchronized audio", "Google ecosystem creators", "Rapid prototyping"]
 shortDescription: "Google's AI video model with native, synchronized audio generation."
-logo: "/logos/placeholder.svg"
+logo: "/logos/google-veo-3.svg"
 websiteUrl: "https://gemini.google/subscriptions"
 pricingTiers:
   - tierName: "Free"
