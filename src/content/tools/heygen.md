@@ -1,4 +1,3 @@
-[heygen.md](https://github.com/user-attachments/files/31761297/heygen.md)
 ---
 toolName: "HeyGen"
 category: video
@@ -56,5 +55,4 @@ faq:
   - question: "Does HeyGen have an affiliate program?"
     answer: "Yes, an official Social Creator Program is listed at heygen.com/geniverse/social-creator-program."
 ---
-
 Testing in progress. This profile is based on officially verified information only.
