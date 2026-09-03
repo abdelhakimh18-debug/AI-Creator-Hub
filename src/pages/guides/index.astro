@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const guides = await getCollection('guides');
+const hasDemo = guides.some((g) => g.data.isDemo);
+---
+<Layout title="AI Guides & Workflows" noindex={hasDemo}>
+  <main class="max-w-3xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4"><a href="/">Home</a> / <span>Guides</span></nav>
+    <h1 class="text-h1 mb-2">AI Guides & Workflows</h1>
+    <p class="text-body text-text2 mb-6">Practical, step-by-step workflows for creating content with AI tools.</p>
+    <div class="flex flex-col gap-3">
+      {guides.map((guide) => (
+        <a href={`/guides/${guide.slug}/`} class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+          <p class="text-small text-text2 uppercase mb-1">{guide.data.guideType}</p>
+          <h2 class="text-h3">{guide.data.title}</h2>
+          {guide.data.estimatedTime && <p class="text-small text-text2 mt-1">Estimated time: {guide.data.estimatedTime}</p>}
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
