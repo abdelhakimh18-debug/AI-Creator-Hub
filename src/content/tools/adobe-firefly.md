@@ -3,7 +3,7 @@ toolName: "Adobe Firefly"
 category: image
 bestFor: ["Commercially-safe AI image generation", "Existing Adobe Creative Cloud users", "Marketing teams"]
 shortDescription: "Adobe's generative AI for image, video, and audio — trained on licensed content."
-logo: "/logos/placeholder.svg"
+logo: "/logos/adobe-firefly.svg"
 websiteUrl: "https://firefly.adobe.com"
 pricingTiers:
   - tierName: "Free"
