@@ -1,4 +1,3 @@
-[runway.md](https://github.com/user-attachments/files/31761279/runway.md)
 ---
 toolName: "Runway"
 category: video
@@ -56,5 +55,4 @@ faq:
   - question: "Does Runway have an affiliate program?"
     answer: "Yes. The official Runway Affiliate Program pays $15 per new paid subscriber and gives the referred user 25% off, confirmed at runway.com/affiliate-program."
 ---
-
 Testing in progress. This profile is based on officially verified information only.
