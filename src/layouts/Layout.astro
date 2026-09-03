@@ -15,9 +15,30 @@ interface Props {
 const { title, description, noindex = false, type = 'website', jsonLd } = Astro.props;
 
 const siteName = 'Creatoria Hub';
-const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
+// .includes() rather than exact match: covers both a bare "Creatoria Hub" title and a
+// homepage-style title that already embeds the site name (e.g. "Creatoria Hub — AI Tools
+// for Creators") without appending the site name a second time.
+const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+
+// Sitewide entity schema (WebSite + Organization) — emitted on every page, in addition to
+// whatever page-specific jsonLd (BreadcrumbList, FAQPage, ...) is passed in below.
+// No logo/sameAs here: no site logo asset or verified social profiles exist yet to point to.
+const siteJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteName,
+    url: String(Astro.site),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: siteName,
+    url: String(Astro.site),
+  },
+];
+const jsonLdBlocks = [...siteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 
 const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 ---
