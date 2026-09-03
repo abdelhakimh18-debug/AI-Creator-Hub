@@ -7,10 +7,14 @@ const tools = await getCollection('tools');
 const hasDemo = tools.some((t) => t.data.isDemo);
 const categories = [...new Set(tools.map((t) => t.data.category))].sort();
 const categoryLabel = (c: string) => (c === 'ugc' ? 'UGC' : c.charAt(0).toUpperCase() + c.slice(1));
+
+// Search text pulled straight from real fields — bestFor is the richest use-case data we have per tool.
+const searchText = (t: (typeof tools)[number]) =>
+  [t.data.toolName, ...t.data.bestFor, t.data.shortDescription].join(' ').toLowerCase();
 ---
 <Layout
   title="Find My Tool"
-  description="Answer two quick questions to see which AI tools match what you want to create and your budget."
+  description="Filter AI tools by what you want to create, your budget, and free-plan availability."
   noindex={hasDemo}
   jsonLd={{
     '@context': 'https://schema.org',
@@ -27,21 +31,41 @@ const categoryLabel = (c: string) => (c === 'ugc' ? 'UGC' : c.charAt(0).toUpperC
     </nav>
     <h1 class="text-h1 mb-2">Find My Tool</h1>
     <p class="text-body text-text2 mb-6">
-      A simple first pass — filter by what you want to create and your budget. This will grow into a fuller
+      Filter by what you want to create, your budget, and free-plan availability. This will grow into a fuller
       recommendation flow as the tool database expands.
     </p>
 
-    <div class="flex flex-wrap gap-6 items-end mb-6 p-4 border border-border rounded-card bg-surface">
+    <div class="flex flex-col gap-4 mb-6 p-4 border border-border rounded-card bg-surface">
       <div>
-        <label for="category-filter" class="block text-small font-semibold mb-1">What do you want to create?</label>
-        <select id="category-filter" class="border border-border rounded px-2 py-1.5 bg-background">
-          <option value="all">All categories</option>
-          {categories.map((c) => <option value={c}>{categoryLabel(c)}</option>)}
-        </select>
+        <label for="search-filter" class="block text-small font-semibold mb-1">What do you want to make?</label>
+        <input
+          type="text"
+          id="search-filter"
+          placeholder="e.g. YouTube, podcast, filmmaker, marketing…"
+          class="w-full border border-border rounded px-2 py-1.5 bg-background"
+        />
       </div>
-      <div class="flex items-center gap-2">
-        <input type="checkbox" id="free-filter" class="w-4 h-4" />
-        <label for="free-filter" class="text-body">Free plan only</label>
+      <div class="flex flex-wrap gap-6 items-end">
+        <div>
+          <label for="category-filter" class="block text-small font-semibold mb-1">Category</label>
+          <select id="category-filter" class="border border-border rounded px-2 py-1.5 bg-background">
+            <option value="all">All categories</option>
+            {categories.map((c) => <option value={c}>{categoryLabel(c)}</option>)}
+          </select>
+        </div>
+        <div>
+          <label for="budget-filter" class="block text-small font-semibold mb-1">Max budget</label>
+          <select id="budget-filter" class="border border-border rounded px-2 py-1.5 bg-background">
+            <option value="any">Any budget</option>
+            <option value="10">$10/mo or less</option>
+            <option value="20">$20/mo or less</option>
+            <option value="30">$30/mo or less</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="free-filter" class="w-4 h-4" />
+          <label for="free-filter" class="text-body">Free plan only</label>
+        </div>
       </div>
     </div>
 
@@ -49,7 +73,13 @@ const categoryLabel = (c: string) => (c === 'ugc' ? 'UGC' : c.charAt(0).toUpperC
 
     <div id="results" class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-3">
       {tools.map((tool) => (
-        <div class="tool-finder-item" data-category={tool.data.category} data-free={tool.data.hasFreePlan ? '1' : '0'}>
+        <div
+          class="tool-finder-item"
+          data-category={tool.data.category}
+          data-free={tool.data.hasFreePlan ? '1' : '0'}
+          data-price={tool.data.startingPrice}
+          data-search={searchText(tool)}
+        >
           <ToolCard tool={tool} />
         </div>
       ))}
@@ -59,20 +89,28 @@ const categoryLabel = (c: string) => (c === 'ugc' ? 'UGC' : c.charAt(0).toUpperC
   </main>
 
   <script>
+    const searchInput = document.getElementById('search-filter') as HTMLInputElement;
     const categorySelect = document.getElementById('category-filter') as HTMLSelectElement;
+    const budgetSelect = document.getElementById('budget-filter') as HTMLSelectElement;
     const freeCheckbox = document.getElementById('free-filter') as HTMLInputElement;
     const items = document.querySelectorAll<HTMLElement>('.tool-finder-item');
     const resultCount = document.getElementById('result-count')!;
     const emptyState = document.getElementById('empty-state')!;
 
     function applyFilters() {
+      const query = searchInput.value.trim().toLowerCase();
       const category = categorySelect.value;
+      const maxBudget = budgetSelect.value;
       const freeOnly = freeCheckbox.checked;
       let visible = 0;
       items.forEach((item) => {
+        const isFree = item.dataset.free === '1';
+        const matchesSearch = !query || (item.dataset.search ?? '').includes(query);
         const matchesCategory = category === 'all' || item.dataset.category === category;
-        const matchesFree = !freeOnly || item.dataset.free === '1';
-        const show = matchesCategory && matchesFree;
+        const matchesFree = !freeOnly || isFree;
+        // A free plan satisfies any budget cap — the paid price only matters if there's no free tier.
+        const matchesBudget = maxBudget === 'any' || isFree || Number(item.dataset.price) <= Number(maxBudget);
+        const show = matchesSearch && matchesCategory && matchesFree && matchesBudget;
         item.hidden = !show;
         if (show) visible++;
       });
@@ -80,7 +118,9 @@ const categoryLabel = (c: string) => (c === 'ugc' ? 'UGC' : c.charAt(0).toUpperC
       emptyState.hidden = visible !== 0;
     }
 
+    searchInput.addEventListener('input', applyFilters);
     categorySelect.addEventListener('change', applyFilters);
+    budgetSelect.addEventListener('change', applyFilters);
     freeCheckbox.addEventListener('change', applyFilters);
     applyFilters();
   </script>
