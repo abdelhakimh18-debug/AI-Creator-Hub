@@ -1,4 +1,3 @@
-[google-veo-3.md](https://github.com/user-attachments/files/31761425/google-veo-3.md)
 ---
 toolName: "Google Veo 3"
 category: video
@@ -49,5 +48,4 @@ faq:
   - question: "Does Google offer an affiliate program for Veo?"
     answer: "No. This is a direct Google product with no affiliate/referral program."
 ---
-
 Testing in progress. Pricing on this profile needs a final live check before publishing — Google's AI subscription tiers are actively changing.
