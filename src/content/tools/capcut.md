@@ -40,8 +40,8 @@ quickVerdict: "⚠️ CapCut does not publish a single global price — cost var
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: []
-relatedGuides: []
+alternatives: ["veed-io"]
+relatedGuides: ["free-ai-tools-for-content-creators", "best-ai-tools-for-tiktok-and-reels-creators"]
 isDemo: false
 isSponsored: false
 faq:

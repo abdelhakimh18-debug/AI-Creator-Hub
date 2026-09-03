@@ -44,7 +44,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["midjourney", "leonardo-ai"]
-relatedGuides: []
+relatedGuides: ["free-ai-tools-for-content-creators"]
 isDemo: false
 isSponsored: false
 faq:

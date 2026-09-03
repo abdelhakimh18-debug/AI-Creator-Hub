@@ -43,7 +43,7 @@ quickVerdict: "No free plan exists — confirmed by consistent, unanimous third-
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["adobe-firefly", "leonardo-ai"]
+alternatives: ["adobe-firefly", "leonardo-ai", "ideogram"]
 relatedGuides: []
 isDemo: false
 isSponsored: false

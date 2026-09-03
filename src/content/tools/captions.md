@@ -38,8 +38,8 @@ quickVerdict: "Pricing compiled from third-party sources — not yet verified di
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: []
-relatedGuides: []
+alternatives: ["arcads"]
+relatedGuides: ["best-ai-tools-for-tiktok-and-reels-creators", "how-to-create-ugc-style-ads-with-ai"]
 isDemo: false
 isSponsored: false
 faq:

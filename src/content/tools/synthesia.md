@@ -39,8 +39,8 @@ quickVerdict: "Pricing compiled from third-party sources — not yet verified di
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["heygen"]
-relatedGuides: []
+alternatives: ["heygen", "hedra"]
+relatedGuides: ["heygen-vs-synthesia-how-to-choose"]
 isDemo: false
 isSponsored: false
 faq:

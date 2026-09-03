@@ -108,6 +108,9 @@ const guides = defineCollection({
 const prompts = defineCollection({
   type: 'content',
   schema: z.object({
+    // ⚠️ حقل جديد: يمنح كل برومبت عنوانًا مميزًا لصفحته (title/H1) بدل الاعتماد على
+    // "AI Prompt — <category>" العام، والذي أصبح مكررًا حرفيًا حين صار لكل فئة أكثر من برومبت.
+    title: z.string().optional(),
     promptText: z.string(),
     category: z.string(),
     relatedTool: reference('tools').optional(),

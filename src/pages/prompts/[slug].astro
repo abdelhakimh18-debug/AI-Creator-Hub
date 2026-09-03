@@ -11,7 +11,11 @@ export async function getStaticPaths() {
 const { prompt } = Astro.props;
 const { Content } = await render(prompt);
 
-const description = `Ready-to-use ${prompt.data.category} AI prompt — copy, customize, and use directly with your favorite AI tool.`;
+// Falls back to the old generic form only for a prompt entry that predates the `title` field —
+// every current prompt has one. Fixes a real duplicate-title bug: title/H1 used to be derived
+// purely from category, so any category with more than one prompt produced identical titles.
+const promptTitle = prompt.data.title ?? `AI Prompt — ${prompt.data.category}`;
+const description = `${promptTitle} — a ready-to-use ${prompt.data.category} prompt. Copy, customize, and use directly with your favorite AI tool.`;
 const categoryUrl = new URL(`/prompts/category/${slugify(prompt.data.category)}/`, Astro.site).toString();
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -20,12 +24,12 @@ const breadcrumbJsonLd = {
     { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site).toString() },
     { '@type': 'ListItem', position: 2, name: 'Prompt Library', item: new URL('/prompts/', Astro.site).toString() },
     { '@type': 'ListItem', position: 3, name: prompt.data.category, item: categoryUrl },
-    { '@type': 'ListItem', position: 4, name: `AI Prompt — ${prompt.data.category}`, item: new URL(`/prompts/${prompt.slug}/`, Astro.site).toString() },
+    { '@type': 'ListItem', position: 4, name: promptTitle, item: new URL(`/prompts/${prompt.slug}/`, Astro.site).toString() },
   ],
 };
 ---
 <Layout
-  title={`AI Prompt — ${prompt.data.category}`}
+  title={promptTitle}
   description={description}
   noindex={prompt.data.isDemo}
   type="article"
@@ -37,7 +41,7 @@ const breadcrumbJsonLd = {
     </nav>
     <article class="border border-border rounded-card bg-surface p-5">
       <a href={`/prompts/category/${slugify(prompt.data.category)}/`} class="text-small text-text2 uppercase mb-2 inline-block hover:underline">{prompt.data.category}</a>
-      <h1 class="text-h1 mb-5">AI Prompt</h1>
+      <h1 class="text-h1 mb-5">{promptTitle}</h1>
       <div class="border border-border rounded-card p-4 bg-background mb-5 whitespace-pre-wrap text-body">{prompt.data.promptText}</div>
       <Content />
       {prompt.data.exampleOutput && <section class="mt-6"><h2 class="text-h3 mb-2">Example Output</h2><p>{prompt.data.exampleOutput}</p></section>}

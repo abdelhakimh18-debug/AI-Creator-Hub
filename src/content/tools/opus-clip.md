@@ -41,8 +41,8 @@ quickVerdict: "Data verified from Opus Clip's official help documentation and pr
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: []
-relatedGuides: ["how-to-turn-long-videos-into-shorts"]
+alternatives: ["vidyo-ai"]
+relatedGuides: ["how-to-turn-long-videos-into-shorts", "free-ai-tools-for-content-creators", "best-ai-tools-for-tiktok-and-reels-creators"]
 isDemo: false
 isSponsored: false
 faq:

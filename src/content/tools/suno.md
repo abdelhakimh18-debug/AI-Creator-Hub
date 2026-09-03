@@ -39,8 +39,8 @@ quickVerdict: "Pricing and plan details compiled from third-party sources — no
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: []
-relatedGuides: []
+alternatives: ["udio"]
+relatedGuides: ["how-to-generate-royalty-free-ai-music-for-youtube"]
 isDemo: false
 isSponsored: false
 faq:

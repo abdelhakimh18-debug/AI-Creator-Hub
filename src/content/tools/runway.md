@@ -45,7 +45,7 @@ quickVerdict: "Data verified directly from runway.com/pricing. Hands-on testing 
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["kling-ai", "google-veo-3", "luma-dream-machine"]
+alternatives: ["kling-ai", "google-veo-3", "luma-dream-machine", "pika"]
 relatedGuides: ["best-ai-video-generator-for-youtube"]
 isDemo: false
 isSponsored: false

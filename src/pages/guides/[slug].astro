@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 
 export async function getStaticPaths() {
@@ -9,6 +9,26 @@ export async function getStaticPaths() {
 
 const { guide } = Astro.props;
 const { Content } = await render(guide);
+
+const relatedTools = await Promise.all((guide.data.relatedTools ?? []).map((ref) => getEntry(ref)));
+
+// Related comparisons/prompts: live-filtered against this guide's relatedTools, same
+// data-driven pattern the tool detail page uses — no schema change, no hardcoded links.
+const relatedToolSlugs = new Set((guide.data.relatedTools ?? []).map((t) => t.slug));
+
+const allComparisons = await getCollection('comparisons');
+const relatedComparisons = await Promise.all(
+  allComparisons
+    .filter((c) => relatedToolSlugs.has(c.data.toolA.slug) || relatedToolSlugs.has(c.data.toolB.slug))
+    .map(async (c) => ({
+      slug: c.slug,
+      toolA: await getEntry(c.data.toolA),
+      toolB: await getEntry(c.data.toolB),
+    }))
+);
+
+const allPrompts = await getCollection('prompts');
+const relatedPrompts = allPrompts.filter((p) => p.data.relatedTool && relatedToolSlugs.has(p.data.relatedTool.slug));
 
 const description = `${guide.data.title} — a step-by-step ${guide.data.guideType} guide${guide.data.estimatedTime ? ` (${guide.data.estimatedTime})` : ''} from Creatoria Hub.`;
 const breadcrumbJsonLd = {
@@ -35,5 +55,22 @@ const breadcrumbJsonLd = {
       <div class="text-small text-text2 mb-6">{guide.data.guideType}{guide.data.difficultyLevel ? ` · ${guide.data.difficultyLevel}` : ''}{guide.data.estimatedTime ? ` · ${guide.data.estimatedTime}` : ''}</div>
       <Content />
     </article>
+
+    {(relatedTools.length > 0 || relatedComparisons.length > 0 || relatedPrompts.length > 0) && (
+      <section class="mt-8 pt-6 border-t border-border">
+        <h2 class="text-h3 mb-2">Related Content</h2>
+        <ul class="list-disc pl-5">
+          {relatedTools.map((t) => (
+            <li><a href={`/tools/${t.data.category}/${t.slug}/`} class="text-accent">{t.data.toolName}</a></li>
+          ))}
+          {relatedComparisons.map((c) => (
+            <li><a href={`/compare/${c.slug}/`} class="text-accent">{c.toolA.data.toolName} vs {c.toolB.data.toolName}</a></li>
+          ))}
+          {relatedPrompts.map((p) => (
+            <li><a href={`/prompts/${p.slug}/`} class="text-accent">AI Prompt — {p.data.category}</a></li>
+          ))}
+        </ul>
+      </section>
+    )}
   </main>
 </Layout>

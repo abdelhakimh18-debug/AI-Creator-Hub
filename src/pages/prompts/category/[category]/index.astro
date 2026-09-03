@@ -39,7 +39,7 @@ const categoryUrl = new URL(`/prompts/category/${slugify(category)}/`, Astro.sit
     <div class="flex flex-col gap-3">
       {prompts.map((prompt) => (
         <a href={`/prompts/${prompt.slug}/`} class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
-          <h2 class="text-h3">{prompt.data.promptText.slice(0, 110)}{prompt.data.promptText.length > 110 ? '…' : ''}</h2>
+          <h2 class="text-h3">{prompt.data.title ?? prompt.data.promptText.slice(0, 110) + (prompt.data.promptText.length > 110 ? '…' : '')}</h2>
         </a>
       ))}
     </div>

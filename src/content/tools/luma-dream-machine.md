@@ -42,8 +42,8 @@ quickVerdict: "Pricing compiled from third-party sources — not yet verified di
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["runway", "kling-ai", "google-veo-3"]
-relatedGuides: []
+alternatives: ["runway", "kling-ai", "google-veo-3", "pika"]
+relatedGuides: ["best-ai-video-generator-for-youtube"]
 isDemo: false
 isSponsored: false
 faq:

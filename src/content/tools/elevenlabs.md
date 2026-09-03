@@ -54,8 +54,8 @@ quickVerdict: "Data verified from ElevenLabs' official pricing page (elevenlabs.
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: []
-relatedGuides: ["how-to-create-ai-voiceovers-with-elevenlabs"]
+alternatives: ["murf-ai"]
+relatedGuides: ["how-to-create-ai-voiceovers-with-elevenlabs", "free-ai-tools-for-content-creators", "ai-tools-for-podcasters"]
 isDemo: false
 isSponsored: false
 faq:

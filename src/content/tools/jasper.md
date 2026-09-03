@@ -22,8 +22,8 @@ features:
   - "Brand Voice customization"
   - "Multi-channel content templates"
   - "Chrome extension"
-alternatives: []
-relatedGuides: []
+alternatives: ["copy-ai"]
+relatedGuides: ["how-to-write-ai-scripts-for-youtube-and-tiktok"]
 platforms: ["web"]
 apiAvailable: false
 commercialUse: true

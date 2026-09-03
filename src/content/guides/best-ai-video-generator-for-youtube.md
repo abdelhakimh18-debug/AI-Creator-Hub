@@ -7,6 +7,8 @@ relatedTools:
   - "runway"
   - "kling-ai"
   - "google-veo-3"
+  - "luma-dream-machine"
+  - "pika"
 isDemo: false
 ---
 
@@ -23,7 +25,7 @@ Choosing an AI video generator for YouTube depends on the production workflow: t
 
 ## Which tools should be considered?
 
-Runway, Kling AI, and Google Veo 3 are useful starting points for a video-generation workflow. Their official specifications differ, so the best choice should be made from the current pricing, access, features, and production requirements rather than an unsupported quality score.
+Runway, Kling AI, Google Veo 3, Luma Dream Machine, and Pika are useful starting points for a video-generation workflow. Their official specifications differ, so the best choice should be made from the current pricing, access, features, and production requirements rather than an unsupported quality score.
 
 ## Production checklist
 

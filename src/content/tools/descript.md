@@ -48,7 +48,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: []
-relatedGuides: []
+relatedGuides: ["text-based-video-editing-with-descript", "ai-tools-for-podcasters"]
 isDemo: false
 isSponsored: false
 faq:

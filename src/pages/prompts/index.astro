@@ -33,7 +33,7 @@ const categories = [...new Set(prompts.map((p) => p.data.category))];
       {prompts.map((prompt) => (
         <a href={`/prompts/${prompt.slug}/`} class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
           <p class="text-small text-text2 uppercase mb-1">{prompt.data.category}</p>
-          <h2 class="text-h3">{prompt.data.promptText.slice(0, 110)}{prompt.data.promptText.length > 110 ? '…' : ''}</h2>
+          <h2 class="text-h3">{prompt.data.title ?? prompt.data.promptText.slice(0, 110) + (prompt.data.promptText.length > 110 ? '…' : '')}</h2>
         </a>
       ))}
     </div>

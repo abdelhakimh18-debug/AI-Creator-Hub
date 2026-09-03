@@ -44,8 +44,8 @@ quickVerdict: "Pricing compiled from third-party sources — not yet verified di
 ourTestPrompts: []
 pros: []
 cons: []
-alternatives: ["midjourney", "adobe-firefly"]
-relatedGuides: []
+alternatives: ["midjourney", "adobe-firefly", "ideogram"]
+relatedGuides: ["free-ai-tools-for-content-creators"]
 isDemo: false
 isSponsored: false
 faq:
