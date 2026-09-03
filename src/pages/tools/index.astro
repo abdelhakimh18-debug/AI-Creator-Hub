@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const tools = await getCollection('tools');
+const categories = [...new Set(tools.map((t) => t.data.category))].sort();
+const hasDemo = tools.some((t) => t.data.isDemo);
+---
+<Layout title="AI Tools Directory" noindex={hasDemo}>
+  <main class="max-w-5xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <span>Tools</span>
+    </nav>
+    <h1 class="text-h1 mb-4">AI Tools Directory</h1>
+    <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-3">
+      {categories.map((category) => {
+        const count = tools.filter((t) => t.data.category === category).length;
+        return (
+          <a href={`/tools/${category}/`} class="border border-border rounded-card bg-surface p-3 block hover:shadow-md transition-shadow">
+            <h2 class="text-h3 capitalize">{category}</h2>
+            <p class="text-small text-text2">{count} tool{count !== 1 ? 's' : ''}</p>
+          </a>
+        );
+      })}
+    </div>
+  </main>
+</Layout>
