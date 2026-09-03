@@ -12,13 +12,15 @@ export async function getStaticPaths() {
   }));
 }
 
-interface Props { tools: Awaited<ReturnType<typeof getCollection<'tools'>>> }
 const { tools } = Astro.props;
 const { category } = Astro.params;
 const hasDemo = tools.some((t) => t.data.isDemo);
 ---
 <Layout title={`Best ${category} AI Tools`} noindex={hasDemo}>
   <main class="max-w-5xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <a href="/tools/">Tools</a> / <span class="capitalize">{category}</span>
+    </nav>
     <h1 class="text-h1 capitalize mb-4">{category} AI Tools</h1>
     <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-4 gap-3">
       {tools.map((tool) => <ToolCard tool={tool} />)}
