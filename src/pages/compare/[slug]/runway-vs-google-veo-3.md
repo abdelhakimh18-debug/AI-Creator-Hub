@@ -5,5 +5,4 @@ comparisonSummary: "Runway is a dedicated AI video/VFX platform, while Google Ve
 winnerOverall: depends
 isDemo: false
 ---
-
 Google Veo 3's pricing was actively changing at the time of writing (post Google I/O 2026 restructure) — verify current tiers before publishing a final recommendation.
