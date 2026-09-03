@@ -1,0 +1,26 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const prompts = await getCollection('prompts');
+const hasDemo = prompts.some((p) => p.data.isDemo);
+const categories = [...new Set(prompts.map((p) => p.data.category))];
+---
+<Layout title="AI Prompt Library" noindex={hasDemo}>
+  <main class="max-w-3xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4"><a href="/">Home</a> / <span>Prompt Library</span></nav>
+    <h1 class="text-h1 mb-2">AI Prompt Library</h1>
+    <p class="text-body text-text2 mb-6">Ready-to-adapt prompts for video, cinematic, advertising, YouTube, and social content workflows.</p>
+    <div class="flex flex-wrap gap-2 mb-6">
+      {categories.map((category) => <span class="text-small border border-border rounded px-2 py-1">{category}</span>)}
+    </div>
+    <div class="flex flex-col gap-3">
+      {prompts.map((prompt) => (
+        <a href={`/prompts/${prompt.slug}/`} class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+          <p class="text-small text-text2 uppercase mb-1">{prompt.data.category}</p>
+          <h2 class="text-h3">{prompt.data.promptText.slice(0, 110)}{prompt.data.promptText.length > 110 ? '…' : ''}</h2>
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
