@@ -1,0 +1,29 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const comparisons = await getCollection('comparisons');
+const resolved = await Promise.all(
+  comparisons.map(async (c) => ({
+    slug: c.slug,
+    toolA: await getEntry(c.data.toolA),
+    toolB: await getEntry(c.data.toolB),
+  }))
+);
+const hasDemo = comparisons.some((c) => c.data.isDemo);
+---
+<Layout title="AI Tool Comparisons" noindex={hasDemo}>
+  <main class="max-w-3xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <span>Compare</span>
+    </nav>
+    <h1 class="text-h1 mb-4">AI Tool Comparisons</h1>
+    <div class="flex flex-col gap-2">
+      {resolved.map(({ slug, toolA, toolB }) => (
+        <a href={`/compare/${slug}/`} class="border border-border rounded-card bg-surface p-3 block hover:shadow-md transition-shadow">
+          {toolA.data.toolName} vs {toolB.data.toolName}
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
