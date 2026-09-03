@@ -1,4 +1,3 @@
-[opus-clip.md](https://github.com/user-attachments/files/31761310/opus-clip.md)
 ---
 toolName: "Opus Clip"
 category: ugc
@@ -52,5 +51,4 @@ faq:
   - question: "Does Opus Clip have an affiliate program?"
     answer: "Yes, an official affiliate program (25% recurring commission for one year) is listed at opus.pro/affiliate."
 ---
-
 Testing in progress. This profile is based on officially verified information only.
