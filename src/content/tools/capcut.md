@@ -3,7 +3,7 @@ toolName: "CapCut"
 category: editing
 bestFor: ["Short-form video editing", "TikTok/Reels creators", "Mobile-first editing"]
 shortDescription: "Free-to-start video editor from ByteDance with built-in AI editing tools."
-logo: "/logos/placeholder.svg"
+logo: "/logos/capcut.svg"
 websiteUrl: "https://www.capcut.com"
 pricingTiers:
   - tierName: "Free"
