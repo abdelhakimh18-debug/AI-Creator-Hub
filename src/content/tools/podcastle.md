@@ -13,12 +13,15 @@ pricingTiers:
   - tierName: "Storyteller"
     price: 11.99
     billingPeriod: monthly
+    features: "Around 8 hours/month of recording and 10 hours of transcription, adds AI cleanup tools like noise/silence removal (per third-party sources)"
   - tierName: "Pro"
     price: 23.99
     billingPeriod: monthly
+    features: "Around 20 hours/month of recording and 25 hours of transcription, adds Revoice AI voice tools (per third-party sources)"
   - tierName: "Teams"
     price: 49.99
     billingPeriod: monthly
+    features: "Same recording/transcription allowances as Pro, per-creator pricing, plus team collaboration features (per third-party sources)"
 startingPrice: 11.99
 hasFreePlan: true
 hasFreeTrial: false

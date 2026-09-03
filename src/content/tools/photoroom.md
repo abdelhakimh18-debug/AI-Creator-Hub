@@ -9,6 +9,7 @@ pricingTiers:
   - tierName: "Free"
     price: 0
     billingPeriod: monthly
+    features: "Basic background removal and editing templates, exports watermarked and capped (around 250/month per third-party sources), non-commercial use only"
   - tierName: "Pro"
     price: 12.99
     billingPeriod: monthly

@@ -1,6 +1,6 @@
 ---
 title: "Best AI Tools for YouTubers"
-introSummary: "Five AI tools spanning the parts of a YouTube workflow — video generation, voice, editing, repurposing, and thumbnails — that come up most often for YouTube creators specifically. Listed alphabetically, not ranked."
+introSummary: "Six AI tools spanning the parts of a YouTube workflow — video generation, voice, editing, repurposing, thumbnails, and turning existing articles into video — that come up most often for YouTube creators specifically. Listed alphabetically, not ranked."
 includedTools:
   - tool: canva
     rankPosition: 1
@@ -11,13 +11,16 @@ includedTools:
   - tool: elevenlabs
     rankPosition: 3
     whyIncluded: "AI voiceover for intros, narration, or dubbing — free plan includes a usable monthly credit allowance."
-  - tool: kling-ai
+  - tool: fliki
     rankPosition: 4
+    whyIncluded: "Turns an existing article or blog post into a narrated video — a distinct starting point from the other tools here, useful for channels that already publish written content and want a video version without reshooting from scratch."
+  - tool: kling-ai
+    rankPosition: 5
     whyIncluded: "Daily-renewing free credits make it practical for testing b-roll or concept shots without a paid plan."
   - tool: opus-clip
-    rankPosition: 5
+    rankPosition: 6
     whyIncluded: "Turns a long YouTube upload into short clips for Shorts, TikTok, and Reels — the highest-leverage repurposing step for channel growth."
 isDemo: false
 ---
 
-This list bundles across categories rather than staying within one, since a YouTube workflow typically touches several: generate or shoot footage, edit it, voice it, design a thumbnail, then repurpose the finished video into shorter clips. See the [Best AI Video Generator for YouTube guide](/guides/best-ai-video-generator-for-youtube/) for a deeper look at the generation step specifically.
+This list bundles across categories rather than staying within one, since a YouTube workflow typically touches several: generate or shoot footage, edit it, voice it, design a thumbnail, then repurpose the finished video into shorter clips. Fliki covers a different starting point — adapting existing written content into video rather than shooting or generating new footage. See the [Best AI Video Generator for YouTube guide](/guides/best-ai-video-generator-for-youtube/) for a deeper look at the generation step specifically, or [Turning a Blog Post into a Video with AI](/guides/turning-a-blog-post-into-a-video-with-ai/) for the article-to-video workflow.

@@ -13,12 +13,15 @@ pricingTiers:
   - tierName: "Lite"
     price: 29
     billingPeriod: monthly
+    features: "Unlimited 1080p clips, desktop editor, publish/schedule to multiple platforms, 10GB storage (per third-party sources)"
   - tierName: "Essential"
     price: 39
     billingPeriod: monthly
+    features: "Everything in Lite, plus AI filler/silence removal, external content support, 25GB storage (per third-party sources)"
   - tierName: "Growth"
     price: 49
     billingPeriod: monthly
+    features: "Everything in Essential, plus custom brand kit, priority access to new features, analytics, priority support, 75GB storage (per third-party sources)"
 startingPrice: 29
 hasFreePlan: true
 hasFreeTrial: false

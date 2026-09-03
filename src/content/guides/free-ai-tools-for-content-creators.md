@@ -12,6 +12,7 @@ relatedTools:
   - "leonardo-ai"
   - "canva"
   - "pika"
+  - "veed-io"
 isDemo: false
 ---
 
@@ -23,7 +24,7 @@ Kling AI's free tier renews daily credits rather than granting a one-time allowa
 
 ## Video editing
 
-CapCut is free-to-start with no core paid gate for basic mobile/desktop editing. If you need browser-based editing with AI captions, most competitors gate their AI features behind a paid tier faster than CapCut does.
+CapCut is free-to-start with no core paid gate for basic mobile/desktop editing. If you need browser-based editing with AI captions instead, VEED.io also has a free tier, though it's more limited — watermarked exports and about 30 minutes/month of AI feature usage — so most people hit its paid gate faster than CapCut's.
 
 ## Voice and audio
 

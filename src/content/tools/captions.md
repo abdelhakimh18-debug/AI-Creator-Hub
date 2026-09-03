@@ -13,6 +13,7 @@ pricingTiers:
   - tierName: "Max"
     price: 24.99
     billingPeriod: monthly
+    features: "500 monthly credits, adds AI actors/digital twins, text-to-video generation, and a shorter generation queue on top of the Basic tier (per third-party sources)"
   - tierName: "Scale 2x"
     price: 69.99
     billingPeriod: monthly
