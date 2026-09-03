@@ -1,4 +1,3 @@
-[adobe-firefly.md](https://github.com/user-attachments/files/31761452/adobe-firefly.md)
 ---
 toolName: "Adobe Firefly"
 category: image
