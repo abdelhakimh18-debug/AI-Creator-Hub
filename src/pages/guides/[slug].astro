@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides');
+  return guides.map((guide) => ({ params: { slug: guide.slug }, props: { guide } }));
+}
+
+const { guide } = Astro.props;
+const { Content } = await render(guide);
+---
+<Layout title={`${guide.data.title} — AI-Creator-Hub`} noindex={guide.data.isDemo}>
+  <main class="max-w-3xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4"><a href="/">Home</a> / <a href="/guides/">Guides</a> / <span>{guide.data.title}</span></nav>
+    <article class="prose max-w-none">
+      <h1 class="text-h1 mb-3">{guide.data.title}</h1>
+      <div class="text-small text-text2 mb-6">{guide.data.guideType}{guide.data.difficultyLevel ? ` · ${guide.data.difficultyLevel}` : ''}{guide.data.estimatedTime ? ` · ${guide.data.estimatedTime}` : ''}</div>
+      <Content />
+    </article>
+  </main>
+</Layout>
