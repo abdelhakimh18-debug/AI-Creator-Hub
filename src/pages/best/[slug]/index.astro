@@ -8,10 +8,8 @@ export async function getStaticPaths() {
   return entries.map((b) => ({ params: { slug: b.slug }, props: { entry: b } }));
 }
 
-interface Props { entry: Awaited<ReturnType<typeof getCollection<'bestOf'>>>[number] }
 const { entry } = Astro.props;
 const d = entry.data;
-
 const resolved = await Promise.all(
   [...d.includedTools]
     .sort((a, b) => a.rankPosition - b.rankPosition)
@@ -27,8 +25,13 @@ const resolved = await Promise.all(
     <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
   )}
   <main class="max-w-3xl mx-auto px-3 py-5">
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <a href="/best/">Best-Of</a> / <span>{d.title}</span>
+    </nav>
+
     <h1 class="text-h1">{d.title}</h1>
     <p class="text-body mt-2">{d.introSummary}</p>
+
     <div class="mt-5 flex flex-col gap-4">
       {resolved.map(({ tool, whyIncluded, rankPosition }) => (
         <div>
