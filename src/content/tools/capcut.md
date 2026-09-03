@@ -1,4 +1,3 @@
-[capcut.md](https://github.com/user-attachments/files/31761440/capcut.md)
 ---
 toolName: "CapCut"
 category: editing
@@ -51,5 +50,4 @@ faq:
   - question: "Does CapCut have an affiliate program?"
     answer: "Yes, an official affiliate program (via Impact.com, up to 35% recurring commission in some regions) is listed at capcut.com/partners/affiliate-program."
 ---
-
 Testing in progress. Pricing on this profile is intentionally shown as a regional reference range, not a fixed price, per CapCut's own official statements.
