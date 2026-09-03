@@ -4,6 +4,6 @@ category: "YouTube Prompts"
 isDemo: false
 ---
 
-# YouTube Hook Prompt
+## YouTube Hook Prompt
 
 Generate multiple opening options, then select one that accurately matches the video's real content. Avoid clickbait that promises information the video does not deliver.

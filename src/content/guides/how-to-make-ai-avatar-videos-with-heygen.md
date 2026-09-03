@@ -8,8 +8,6 @@ relatedTools:
 isDemo: false
 ---
 
-# How to Make AI Avatar Videos with HeyGen
-
 AI avatar production works best when the script, presenter, voice, framing, and visual identity are planned before rendering.
 
 ## Workflow

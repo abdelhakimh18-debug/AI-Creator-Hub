@@ -5,6 +5,6 @@ relatedTool: "google-veo-3"
 isDemo: false
 ---
 
-# Cinematic Historical Film Prompt
+## Cinematic Historical Film Prompt
 
 Use this template for historically grounded cinematic shots. Replace the bracketed fields and keep the same character and environment descriptions across consecutive shots.

@@ -36,6 +36,9 @@ const relatedBestOf = allBestOf.filter((b) =>
   b.data.includedTools.some((item) => item.tool.slug === tool.slug)
 );
 
+const allPrompts = await getCollection('prompts');
+const relatedPrompts = allPrompts.filter((p) => p.data.relatedTool?.slug === tool.slug);
+
 const toolUrl = new URL(`/tools/${d.category}/${tool.slug}/`, Astro.site).toString();
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
@@ -191,7 +194,7 @@ const faqJsonLd = d.faq.length > 0 ? {
     <!-- Related content: now data-driven, pulled from guides/comparisons/bestOf collections -->
     <section class="my-5">
       <h2 class="text-h3 mb-2">Related Content</h2>
-      {(relatedGuides.length > 0 || relatedComparisons.length > 0 || relatedBestOf.length > 0) ? (
+      {(relatedGuides.length > 0 || relatedComparisons.length > 0 || relatedBestOf.length > 0 || relatedPrompts.length > 0) ? (
         <ul class="list-disc pl-5">
           {relatedGuides.map((g) => (
             <li><a href={`/guides/${g.slug}/`} class="text-accent">{g.data.title}</a></li>
@@ -201,6 +204,9 @@ const faqJsonLd = d.faq.length > 0 ? {
           ))}
           {relatedBestOf.map((b) => (
             <li><a href={`/best/${b.slug}/`} class="text-accent">{b.data.title}</a></li>
+          ))}
+          {relatedPrompts.map((p) => (
+            <li><a href={`/prompts/${p.slug}/`} class="text-accent">AI Prompt — {p.data.category}</a></li>
           ))}
         </ul>
       ) : (

@@ -30,6 +30,7 @@ const hasDemo = comparisons.some((c) => c.data.isDemo);
       <a href="/">Home</a> / <span>Compare</span>
     </nav>
     <h1 class="text-h1 mb-4">AI Tool Comparisons</h1>
+    <p class="text-body text-text2 mb-4">Side-by-side comparisons of AI tools' pricing, free plans, commercial-use terms, and platform support — based on officially verified specifications, not hands-on quality testing.</p>
     <div class="flex flex-col gap-2">
       {resolved.map(({ slug, toolA, toolB }) => (
         <a href={`/compare/${slug}/`} class="border border-border rounded-card bg-surface p-3 block hover:shadow-md transition-shadow">

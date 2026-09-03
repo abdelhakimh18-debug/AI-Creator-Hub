@@ -24,6 +24,7 @@ const hasDemo = tools.some((t) => t.data.isDemo);
       <a href="/">Home</a> / <span>Tools</span>
     </nav>
     <h1 class="text-h1 mb-4">AI Tools Directory</h1>
+    <p class="text-body text-text2 mb-4">Browse {tools.length} AI tools for creators across {categories.length} categories — video, audio, image, editing, UGC, and productivity.</p>
     <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-3">
       {categories.map((category) => {
         const count = tools.filter((t) => t.data.category === category).length;

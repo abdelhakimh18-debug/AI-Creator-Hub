@@ -1,0 +1,20 @@
+---
+const navLinks = [
+  { href: '/tools/', label: 'Tools' },
+  { href: '/compare/', label: 'Compare' },
+  { href: '/best/', label: 'Best' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/prompts/', label: 'Prompts' },
+  { href: '/tool-finder/', label: 'Tool Finder' },
+];
+---
+<header class="border-b border-border bg-surface">
+  <div class="max-w-5xl mx-auto px-3 py-3 flex items-center justify-between gap-4 flex-wrap">
+    <a href="/" class="text-h3 font-semibold text-text no-underline">Creatoria Hub</a>
+    <nav class="flex flex-wrap gap-1 text-small">
+      {navLinks.map((link) => (
+        <a href={link.href} class="px-2 py-1 rounded hover:bg-bg text-text2 hover:text-text">{link.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>

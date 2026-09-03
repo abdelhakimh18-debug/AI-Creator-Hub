@@ -5,6 +5,6 @@ relatedTool: "midjourney"
 isDemo: false
 ---
 
-# Photorealistic Image Prompt
+## Photorealistic Image Prompt
 
 Use the template for consistent, realistic still-image generation. Lock the character description and visual context when generating multiple images for the same project.

@@ -5,6 +5,6 @@ relatedTool: "runway"
 isDemo: false
 ---
 
-# Product Advertising Video Prompt
+## Product Advertising Video Prompt
 
 Replace the bracketed fields with the product and setting. Keep the product description fixed across every shot to reduce visual drift.

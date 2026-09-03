@@ -8,8 +8,6 @@ relatedTools:
 isDemo: false
 ---
 
-# How to Create AI Videos with Google Veo 3
-
 A reliable Veo 3 workflow starts with a clear shot plan and short, precise prompts. The goal is to control subject, action, camera, environment, lighting, and audio without overloading a single prompt.
 
 ## Step 1: Plan the shot

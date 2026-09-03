@@ -5,6 +5,6 @@ relatedTool: "kling-ai"
 isDemo: false
 ---
 
-# Vertical Social Video Prompt
+## Vertical Social Video Prompt
 
 Designed for short-form vertical content. Keep the primary subject inside a safe central area so captions and platform UI do not cover important details.

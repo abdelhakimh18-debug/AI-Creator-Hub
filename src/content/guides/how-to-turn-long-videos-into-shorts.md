@@ -8,8 +8,6 @@ relatedTools:
 isDemo: false
 ---
 
-# How to Turn Long Videos into Shorts with Opus Clip
-
 Repurposing long-form content into short videos starts with identifying moments that can stand alone and then adapting framing, captions, and pacing for vertical viewing.
 
 ## Workflow

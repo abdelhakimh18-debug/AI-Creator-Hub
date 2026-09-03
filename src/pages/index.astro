@@ -12,13 +12,62 @@ const hasDemo = tools.some((t) => t.data.isDemo);
   noindex={hasDemo}
 >
   <section class="text-center py-7 px-3 bg-bg">
-    <h1 class="text-h1">Discover the Best AI Tools for Creators</h1>
+    <h1 class="text-h1">Creatoria Hub — AI Tools for Creators</h1>
     <p class="text-body text-text2 mt-2 max-w-xl mx-auto">
-      Find, compare, and learn the AI tools that help you create better videos, images, audio, and content.
+      A directory for video editors, marketers, and content creators to discover, compare, and choose the
+      right AI tools — with verified pricing and no invented ratings.
     </p>
     <div class="flex gap-3 justify-center mt-4">
       <a href="/tools/" class="bg-accent text-white rounded-btn px-4 py-2">Explore AI Tools</a>
       <a href="/tool-finder/" class="border border-border rounded-btn px-4 py-2">Find My Tool</a>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-3 py-6">
+    <h2 class="text-h2 mb-4">What you'll find here</h2>
+    <div class="grid grid-cols-1 tablet:grid-cols-2 desktop:grid-cols-3 gap-3">
+      <a href="/tools/" class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+        <h3 class="text-h3 mb-1">Tool Reviews</h3>
+        <p class="text-body text-text2">{tools.length} AI tools across video, audio, image, editing, UGC, and productivity.</p>
+      </a>
+      <a href="/compare/" class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+        <h3 class="text-h3 mb-1">Comparisons</h3>
+        <p class="text-body text-text2">Side-by-side specs — pricing, free plans, and commercial-use terms.</p>
+      </a>
+      <a href="/best/" class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+        <h3 class="text-h3 mb-1">Best-Of Lists</h3>
+        <p class="text-body text-text2">Curated picks by use case, built from verified specifications.</p>
+      </a>
+      <a href="/guides/" class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+        <h3 class="text-h3 mb-1">Guides</h3>
+        <p class="text-body text-text2">Step-by-step workflows for creating content with AI tools.</p>
+      </a>
+      <a href="/prompts/" class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+        <h3 class="text-h3 mb-1">Prompt Library</h3>
+        <p class="text-body text-text2">Ready-to-use prompts you can copy, customize, and run directly.</p>
+      </a>
+      <a href="/tool-finder/" class="border border-border rounded-card bg-surface p-4 block hover:shadow-md transition-shadow">
+        <h3 class="text-h3 mb-1">Tool Finder</h3>
+        <p class="text-body text-text2">Filter by what you want to create, your budget, and free-plan availability.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="max-w-5xl mx-auto px-3 py-6">
+    <h2 class="text-h2 mb-4">Why trust Creatoria Hub</h2>
+    <div class="grid grid-cols-1 tablet:grid-cols-3 gap-3">
+      <div class="border border-border rounded-card bg-surface p-4">
+        <h3 class="text-h3 mb-1">Verified pricing, labeled sourcing</h3>
+        <p class="text-body text-text2">Pricing and features are checked directly against each tool's official page where possible; entries compiled from third-party sources instead are clearly marked "Community-sourced."</p>
+      </div>
+      <div class="border border-border rounded-card bg-surface p-4">
+        <h3 class="text-h3 mb-1">No invented ratings</h3>
+        <p class="text-body text-text2">A tool only gets a score after real hands-on testing. Until then, its rating shows as "Pending" instead of a guessed number.</p>
+      </div>
+      <div class="border border-border rounded-card bg-surface p-4">
+        <h3 class="text-h3 mb-1">Built for creators</h3>
+        <p class="text-body text-text2">Organized by what you're trying to make — video, audio, image, editing, UGC, or productivity — not generic software categories.</p>
+      </div>
     </div>
   </section>
 

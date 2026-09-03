@@ -8,8 +8,6 @@ relatedTools:
 isDemo: false
 ---
 
-# How to Create AI Voiceovers with ElevenLabs
-
 A strong AI voiceover workflow begins with a script written for speech rather than for silent reading.
 
 ## Workflow
