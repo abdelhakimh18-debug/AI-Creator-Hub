@@ -1,4 +1,3 @@
-[kling-ai.md](https://github.com/user-attachments/files/31761340/kling-ai.md)
 ---
 toolName: "Kling AI"
 category: video
@@ -54,5 +53,4 @@ faq:
   - question: "Does Kling AI have an affiliate program?"
     answer: "Yes, but it is invite-only (kling.ai/app/commission-share) — public affiliates cannot apply directly as of this writing."
 ---
-
 Testing in progress. This profile is based on officially verified information where possible; pricing needs a final live-price check before publishing.
