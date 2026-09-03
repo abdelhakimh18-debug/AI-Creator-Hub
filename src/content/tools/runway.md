@@ -3,7 +3,7 @@ toolName: "Runway"
 category: video
 bestFor: ["Cinematic AI video", "VFX & video editing", "Filmmakers"]
 shortDescription: "AI video generation platform — text/image-to-video, VFX, and editing tools."
-logo: "/logos/placeholder.svg"
+logo: "/logos/runway.svg"
 websiteUrl: "https://runwayml.com"
 pricingTiers:
   - tierName: "Free"
