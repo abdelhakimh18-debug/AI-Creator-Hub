@@ -3,7 +3,7 @@ toolName: "ElevenLabs"
 category: audio
 bestFor: ["YouTube voiceovers", "Podcast production", "Video dubbing"]
 shortDescription: "AI voice generator for text-to-speech, voice cloning, and video dubbing."
-logo: "/logos/placeholder.svg"
+logo: "/logos/elevenlabs.svg"
 websiteUrl: "https://elevenlabs.io"
 pricingTiers:
   - tierName: "Free"
