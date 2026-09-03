@@ -3,7 +3,7 @@ toolName: "HeyGen"
 category: video
 bestFor: ["AI avatar videos", "Training & e-learning videos", "Marketing localization"]
 shortDescription: "AI avatar video generator — turn a script into a presenter-style video."
-logo: "/logos/placeholder.svg"
+logo: "/logos/heygen.svg"
 websiteUrl: "https://www.heygen.com"
 pricingTiers:
   - tierName: "Free"
