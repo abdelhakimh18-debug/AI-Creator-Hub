@@ -1,0 +1,22 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+const entries = await getCollection('bestOf');
+const hasDemo = entries.some((e) => e.data.isDemo);
+---
+<Layout title="Best AI Tools — Curated Lists" noindex={hasDemo}>
+  <main class="max-w-3xl mx-auto px-3 py-6">
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <span>Best-Of</span>
+    </nav>
+    <h1 class="text-h1 mb-4">Best AI Tools — Curated Lists</h1>
+    <div class="flex flex-col gap-2">
+      {entries.map((e) => (
+        <a href={`/best/${e.slug}/`} class="border border-border rounded-card bg-surface p-3 block hover:shadow-md transition-shadow">
+          {e.data.title}
+        </a>
+      ))}
+    </div>
+  </main>
+</Layout>
