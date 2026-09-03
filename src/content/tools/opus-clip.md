@@ -3,7 +3,7 @@ toolName: "Opus Clip"
 category: ugc
 bestFor: ["Podcast-to-Shorts repurposing", "YouTuber clip creation", "Social media managers"]
 shortDescription: "Turns long-form video into short, captioned social clips using AI."
-logo: "/logos/placeholder.svg"
+logo: "/logos/opus-clip.svg"
 websiteUrl: "https://www.opus.pro"
 pricingTiers:
   - tierName: "Free"
