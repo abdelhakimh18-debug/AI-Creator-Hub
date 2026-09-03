@@ -23,7 +23,7 @@ const relatedGuides = await Promise.all((d.relatedGuides ?? []).map((ref) => get
 const allComparisons = await getCollection('comparisons');
 const relatedComparisons = await Promise.all(
   allComparisons
-    .filter((c) => c.data.toolA.id === tool.id || c.data.toolB.id === tool.id)
+    .filter((c) => c.data.toolA.slug === tool.slug || c.data.toolB.slug === tool.slug)
     .map(async (c) => ({
       slug: c.slug,
       toolA: await getEntry(c.data.toolA),
@@ -33,7 +33,7 @@ const relatedComparisons = await Promise.all(
 
 const allBestOf = await getCollection('bestOf');
 const relatedBestOf = allBestOf.filter((b) =>
-  b.data.includedTools.some((item) => item.tool.id === tool.id)
+  b.data.includedTools.some((item) => item.tool.slug === tool.slug)
 );
 ---
 <Layout title={`${d.toolName} — AI Tool Profile`} noindex={d.isDemo}>
