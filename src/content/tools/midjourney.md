@@ -1,4 +1,3 @@
-[midjourney.md](https://github.com/user-attachments/files/31761325/midjourney.md)
 ---
 toolName: "Midjourney"
 category: image
@@ -54,5 +53,4 @@ faq:
   - question: "Does Midjourney have an affiliate program?"
     answer: "No official affiliate program was found. Midjourney describes itself as a small, self-funded research lab."
 ---
-
 Testing in progress. This profile is based on officially verified information only.
