@@ -3,7 +3,7 @@ toolName: "Kling AI"
 category: video
 bestFor: ["Short-form social video", "Budget-conscious video generation", "Faceless YouTube channels"]
 shortDescription: "AI video generator from Kuaishou with a generous daily free credit allowance."
-logo: "/logos/placeholder.svg"
+logo: "/logos/kling-ai.svg"
 websiteUrl: "https://klingai.com"
 pricingTiers:
   - tierName: "Free"
