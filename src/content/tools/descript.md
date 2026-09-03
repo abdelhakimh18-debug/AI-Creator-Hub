@@ -3,7 +3,7 @@ toolName: "Descript"
 category: editing
 bestFor: ["Podcast editing", "Text-based video editing", "Solo YouTubers"]
 shortDescription: "Text-based video and audio editor — edit media by editing a transcript."
-logo: "/logos/placeholder.svg"
+logo: "/logos/descript.svg"
 websiteUrl: "https://www.descript.com"
 pricingTiers:
   - tierName: "Free"
