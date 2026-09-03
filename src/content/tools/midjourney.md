@@ -3,7 +3,7 @@ toolName: "Midjourney"
 category: image
 bestFor: ["Artistic image generation", "Concept art", "Marketing visuals"]
 shortDescription: "AI image generator known for high artistic quality; subscription only, no free plan."
-logo: "/logos/placeholder.svg"
+logo: "/logos/midjourney.svg"
 websiteUrl: "https://www.midjourney.com"
 pricingTiers:
   - tierName: "Basic"
