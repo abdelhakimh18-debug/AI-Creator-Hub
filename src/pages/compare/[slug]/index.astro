@@ -7,42 +7,56 @@ export async function getStaticPaths() {
   return comparisons.map((c) => ({ params: { slug: c.slug }, props: { comparison: c } }));
 }
 
-interface Props { comparison: Awaited<ReturnType<typeof getCollection<'comparisons'>>>[number] }
 const { comparison } = Astro.props;
 const d = comparison.data;
 const toolA = await getEntry(d.toolA);
 const toolB = await getEntry(d.toolB);
+
+const rows = [
+  { label: 'Starting Price', a: toolA.data.hasFreePlan ? 'Free' : `$${toolA.data.startingPrice}/mo`, b: toolB.data.hasFreePlan ? 'Free' : `$${toolB.data.startingPrice}/mo` },
+  { label: 'Free Plan', a: toolA.data.hasFreePlan ? 'Yes' : 'No', b: toolB.data.hasFreePlan ? 'Yes' : 'No' },
+  { label: 'Commercial Use', a: toolA.data.commercialUse ? 'Available (see tool page for exact terms)' : 'Not available / restricted', b: toolB.data.commercialUse ? 'Available (see tool page for exact terms)' : 'Not available / restricted' },
+  { label: 'API Available', a: toolA.data.apiAvailable ? 'Yes' : 'No', b: toolB.data.apiAvailable ? 'Yes' : 'No' },
+  { label: 'Platforms', a: toolA.data.platforms.join(', '), b: toolB.data.platforms.join(', ') },
+  { label: 'Watermark (base/free tier)', a: toolA.data.watermark ? 'Yes' : 'No', b: toolB.data.watermark ? 'Yes' : 'No' },
+];
 ---
-<Layout title={`${toolA.data.toolName} vs ${toolB.data.toolName}`} noindex={d.isDemo}>
+<Layout title={`${toolA.data.toolName} vs ${toolB.data.toolName} — Spec Comparison`} noindex={d.isDemo}>
   {d.isDemo && (
     <div class="bg-demo text-white text-center py-1 text-small">DEMO DATA — for prototype testing only</div>
   )}
   <main class="max-w-3xl mx-auto px-3 py-5">
+    <nav class="text-small text-text2 mb-4">
+      <a href="/">Home</a> / <a href="/compare/">Compare</a> / <span>{toolA.data.toolName} vs {toolB.data.toolName}</span>
+    </nav>
+
     <h1 class="text-h1">{toolA.data.toolName} vs {toolB.data.toolName}</h1>
     <p class="text-body mt-2">{d.comparisonSummary}</p>
+    <p class="text-small text-text2 mt-2">This comparison covers officially verified specifications only — no hands-on quality testing has been performed on either tool.</p>
 
     <table class="w-full mt-5 border border-border rounded-card overflow-hidden text-body">
       <thead>
         <tr class="bg-surface">
           <th class="p-2 text-left"></th>
-          <th class="p-2 text-left">{toolA.data.toolName}</th>
-          <th class="p-2 text-left">{toolB.data.toolName}</th>
+          <th class="p-2 text-left"><a href={`/tools/${toolA.data.category}/${toolA.slug}/`} class="text-accent">{toolA.data.toolName}</a></th>
+          <th class="p-2 text-left"><a href={`/tools/${toolB.data.category}/${toolB.slug}/`} class="text-accent">{toolB.data.toolName}</a></th>
         </tr>
       </thead>
       <tbody>
-        <tr class="border-t border-border">
-          <td class="p-2">Starting Price</td>
-          <td class="p-2">${toolA.data.startingPrice}</td>
-          <td class="p-2">${toolB.data.startingPrice}</td>
-        </tr>
-        <tr class="border-t border-border">
-          <td class="p-2">Free Plan</td>
-          <td class="p-2">{toolA.data.hasFreePlan ? 'Yes' : 'No'}</td>
-          <td class="p-2">{toolB.data.hasFreePlan ? 'Yes' : 'No'}</td>
-        </tr>
+        {rows.map((r) => (
+          <tr class="border-t border-border">
+            <td class="p-2 font-semibold">{r.label}</td>
+            <td class="p-2">{r.a}</td>
+            <td class="p-2">{r.b}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
 
-    <p class="mt-5 font-semibold">Winner: {d.winnerOverall}</p>
+    <p class="mt-5 text-body text-text2">
+      {d.winnerOverall === 'depends'
+        ? 'Which tool is the better fit depends on your specific use case, budget, and required features — see each tool\'s full profile for details.'
+        : `Based on verified specifications: ${d.winnerOverall === 'tool-a' ? toolA.data.toolName : toolB.data.toolName} has an edge on the criteria above.`}
+    </p>
   </main>
 </Layout>
