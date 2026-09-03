@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /
 
-Sitemap: https://REPLACE-WITH-NETLIFY-DOMAIN.netlify.app/sitemap-index.xml
+Sitemap: https://creatoriahub.com/sitemap-index.xml

@@ -14,7 +14,7 @@ interface Props {
 
 const { title, description, noindex = false, type = 'website', jsonLd } = Astro.props;
 
-const siteName = 'AI Creator Hub';
+const siteName = 'Creatoria Hub';
 const fullTitle = title === siteName ? title : `${title} | ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const jsonLdBlocks = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];

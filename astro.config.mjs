@@ -3,8 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  // ⚠️ يجب استبداله بالدومين الفعلي قبل الإطلاق — يُستخدم في sitemap.xml وcanonical وOpen Graph
-  site: 'https://REPLACE-WITH-NETLIFY-DOMAIN.netlify.app',
+  site: 'https://creatoriahub.com',
   integrations: [
     tailwind(),
     sitemap({

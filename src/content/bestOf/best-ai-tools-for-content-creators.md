@@ -1,6 +1,6 @@
 ---
 title: "Best AI Tools for Content Creators"
-introSummary: "All 10 tools currently profiled on AI Creator Hub, covering video, audio, image, editing, and UGC repurposing. Listed alphabetically — this is a categorized directory based on verified official specifications, not a quality ranking, since no hands-on testing has been performed yet."
+introSummary: "10 of the AI tools profiled on Creatoria Hub, covering video, audio, image, editing, and UGC repurposing. Listed alphabetically — this is a categorized directory based on verified official specifications, not a quality ranking, since no hands-on testing has been performed yet."
 includedTools:
   - tool: adobe-firefly
     rankPosition: 1

@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 const { guide } = Astro.props;
 const { Content } = await render(guide);
 
-const description = `${guide.data.title} — a step-by-step ${guide.data.guideType} guide${guide.data.estimatedTime ? ` (${guide.data.estimatedTime})` : ''} from AI Creator Hub.`;
+const description = `${guide.data.title} — a step-by-step ${guide.data.guideType} guide${guide.data.estimatedTime ? ` (${guide.data.estimatedTime})` : ''} from Creatoria Hub.`;
 const breadcrumbJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
@@ -22,7 +22,7 @@ const breadcrumbJsonLd = {
 };
 ---
 <Layout
-  title={`${guide.data.title} — AI-Creator-Hub`}
+  title={guide.data.title}
   description={description}
   noindex={guide.data.isDemo}
   type="article"

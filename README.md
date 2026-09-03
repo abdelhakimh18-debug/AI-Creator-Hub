@@ -1,4 +1,4 @@
-# AI Creator Hub — Astro + Tailwind + Netlify
+# Creatoria Hub — Astro + Tailwind + Netlify
 
 دليل احترافي لأدوات الذكاء الاصطناعي لصناعة المحتوى: مراجعات أدوات، مقارنات، قوائم Best-Of، أدلة تعليمية، ومكتبة Prompts — مبني كموقع Static بالكامل.
 
@@ -59,8 +59,8 @@ PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
 دون هذا المتغير، لا يُحمَّل أي سكربت تتبع إطلاقًا.
 
 ## ⚠️ قبل الإطلاق الفعلي (Checklist)
-- [ ] استبدل `site` في `astro.config.mjs` بالدومين الحقيقي (يؤثر على sitemap وcanonical وOpen Graph).
-- [ ] استبدل سطر `Sitemap:` في `public/robots.txt` بنفس الدومين الحقيقي.
+- [x] `site` في `astro.config.mjs` مضبوط على `https://creatoriahub.com` (يؤثر على sitemap وcanonical وOpen Graph) — تأكد أن الدومين مُشترى ومربوط بـNetlify فعليًا قبل الإطلاق.
+- [x] سطر `Sitemap:` في `public/robots.txt` مضبوط على نفس الدومين.
 - [ ] احذف `Disallow: /` من `public/robots.txt` (اتركه Allow بشكل افتراضي، أو حدد استثناءات إن لزم).
 - [ ] احذف قسم `[[headers]] X-Robots-Tag` بالكامل من `netlify.toml`.
 - [ ] تأكد أن كل محتوى حقيقي جديد يحمل `isDemo: false` صراحةً (راجع القسم أعلاه).
