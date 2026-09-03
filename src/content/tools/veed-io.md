@@ -18,10 +18,10 @@ pricingTiers:
     price: 21
     billingPeriod: monthly
     features: "AI video generation, 4K downloads, background removal, eye-contact correction"
-  - tierName: "Studio"
+  - tierName: "Studio (price uncertain — sources disagree, $39-59/mo)"
     price: 39
     billingPeriod: monthly
-    features: "Team seats, brand-kit controls, centralized billing"
+    features: "Team seats, brand-kit controls, centralized billing. Sources gave two different figures for this tier; $39 shown here, but treat as unconfirmed either way."
 startingPrice: 12
 hasFreePlan: true
 hasFreeTrial: false

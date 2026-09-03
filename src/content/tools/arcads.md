@@ -6,14 +6,14 @@ shortDescription: "AI actors for UGC-style video ads — generate talking-head a
 logo: "/logos/arcads.svg"
 websiteUrl: "https://www.arcads.ai"
 pricingTiers:
-  - tierName: "Starter"
+  - tierName: "Starter (unconfirmed — Arcads does not publish prices)"
     price: 110
     billingPeriod: monthly
-    features: "10 videos/month (per third-party sources)"
-  - tierName: "Creator"
+    features: "10 videos/month. Price is a third-party estimate, not sourced from arcads.ai."
+  - tierName: "Creator (unconfirmed — Arcads does not publish prices)"
     price: 220
     billingPeriod: monthly
-    features: "20 videos/month"
+    features: "20 videos/month. Price is a third-party estimate, not sourced from arcads.ai."
 startingPrice: 110
 hasFreePlan: false
 hasFreeTrial: false

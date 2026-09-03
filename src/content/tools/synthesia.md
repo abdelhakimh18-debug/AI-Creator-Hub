@@ -22,7 +22,7 @@ startingPrice: 29
 hasFreePlan: true
 hasFreeTrial: false
 features:
-  - "150+ AI avatars (per third-party sources)"
+  - "125+ avatars on Starter, 180+ on Creator (per third-party sources)"
   - "AI script assistant"
   - "Multi-language voiceovers"
   - "Custom fonts & branding (higher tiers)"
