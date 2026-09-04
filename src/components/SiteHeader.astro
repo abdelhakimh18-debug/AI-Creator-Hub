@@ -10,7 +10,9 @@ const navLinks = [
 ---
 <header class="border-b border-border bg-surface">
   <div class="max-w-5xl mx-auto px-3 py-3 flex items-center justify-between gap-4 flex-wrap">
-    <a href="/" class="text-h3 font-semibold text-text no-underline">Creatoria Hub</a>
+    <a href="/" aria-label="CreatoriaHub home" class="no-underline shrink-0">
+      <img src="/logos/creatoria-hub.svg" alt="CreatoriaHub — AI Tools for Creators" width="245" height="48" class="h-10 sm:h-11 w-auto" loading="eager" decoding="async" />
+    </a>
     <nav class="flex flex-wrap gap-1 text-small">
       {navLinks.map((link) => (
         <a href={link.href} class="px-2 py-1 rounded hover:bg-bg text-text2 hover:text-text">{link.label}</a>

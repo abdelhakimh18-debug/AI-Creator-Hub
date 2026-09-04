@@ -5,27 +5,19 @@ import SiteFooter from '../components/SiteFooter.astro';
 
 interface Props {
   title: string;
-  /** Meta/OG description — required so every page ships one deliberately, not by accident. */
   description: string;
   noindex?: boolean;
-  /** Open Graph type. Use 'article' for a single tool/guide/prompt/comparison, 'website' for listings. */
   type?: 'website' | 'article';
-  /** One or more JSON-LD objects (e.g. BreadcrumbList, FAQPage) to embed as <script type="application/ld+json">. */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const { title, description, noindex = false, type = 'website', jsonLd } = Astro.props;
 
 const siteName = 'Creatoria Hub';
-// .includes() rather than exact match: covers both a bare "Creatoria Hub" title and a
-// homepage-style title that already embeds the site name (e.g. "Creatoria Hub — AI Tools
-// for Creators") without appending the site name a second time.
 const fullTitle = title.includes(siteName) ? title : `${title} | ${siteName}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const logoURL = new URL('/logos/creatoria-hub.svg', Astro.site);
 
-// Sitewide entity schema (WebSite + Organization) — emitted on every page, in addition to
-// whatever page-specific jsonLd (BreadcrumbList, FAQPage, ...) is passed in below.
-// No logo/sameAs here: no site logo asset or verified social profiles exist yet to point to.
 const siteJsonLd = [
   {
     '@context': 'https://schema.org',
@@ -38,6 +30,7 @@ const siteJsonLd = [
     '@type': 'Organization',
     name: siteName,
     url: String(Astro.site),
+    logo: String(logoURL),
   },
 ];
 const jsonLdBlocks = [...siteJsonLd, ...(jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
@@ -49,6 +42,7 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preload" as="image" href="/logos/creatoria-hub.svg" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
@@ -59,20 +53,17 @@ const gaId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
   <meta property="og:description" content={description} />
   <meta property="og:type" content={type} />
   <meta property="og:url" content={canonicalURL} />
+  <meta property="og:image" content={logoURL} />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content={fullTitle} />
   <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={logoURL} />
 
   {jsonLdBlocks.map((block) => (
     <script type="application/ld+json" set:html={JSON.stringify(block)} />
   ))}
 
-  <!--
-    Analytics is opt-in and off by default: no tracking ID is hardcoded here.
-    Set PUBLIC_GA_MEASUREMENT_ID (Netlify env var or .env) to a real GA4
-    measurement ID (e.g. G-XXXXXXXXXX) to turn it on — no code change needed.
-  -->
   {gaId && (
     <>
       <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>
