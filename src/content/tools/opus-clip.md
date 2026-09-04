@@ -42,7 +42,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["vidyo-ai"]
-relatedGuides: ["how-to-turn-long-videos-into-shorts", "free-ai-tools-for-content-creators", "best-ai-tools-for-tiktok-and-reels-creators"]
+relatedGuides: ["how-to-turn-long-videos-into-shorts", "free-ai-tools-for-content-creators", "best-ai-tools-for-tiktok-and-reels-creators", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:

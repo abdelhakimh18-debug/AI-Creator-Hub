@@ -44,7 +44,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["adobe-firefly", "leonardo-ai", "ideogram"]
-relatedGuides: []
+relatedGuides: ["ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:

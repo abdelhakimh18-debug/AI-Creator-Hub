@@ -46,7 +46,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["kling-ai", "google-veo-3", "luma-dream-machine", "pika"]
-relatedGuides: ["best-ai-video-generator-for-youtube"]
+relatedGuides: ["best-ai-video-generator-for-youtube", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:

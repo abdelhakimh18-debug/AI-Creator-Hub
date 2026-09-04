@@ -39,7 +39,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["runway", "kling-ai", "luma-dream-machine"]
-relatedGuides: ["best-ai-video-generator-for-youtube", "how-to-create-ai-videos-with-veo-3"]
+relatedGuides: ["best-ai-video-generator-for-youtube", "how-to-create-ai-videos-with-veo-3", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:
