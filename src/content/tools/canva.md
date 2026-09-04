@@ -39,7 +39,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: []
-relatedGuides: ["free-ai-tools-for-content-creators"]
+relatedGuides: ["free-ai-tools-for-content-creators", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:

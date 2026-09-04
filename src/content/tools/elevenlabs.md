@@ -55,7 +55,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["murf-ai"]
-relatedGuides: ["how-to-create-ai-voiceovers-with-elevenlabs", "free-ai-tools-for-content-creators", "ai-tools-for-podcasters"]
+relatedGuides: ["how-to-create-ai-voiceovers-with-elevenlabs", "free-ai-tools-for-content-creators", "ai-tools-for-podcasters", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:

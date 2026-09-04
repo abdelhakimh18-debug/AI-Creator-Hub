@@ -41,7 +41,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["veed-io"]
-relatedGuides: ["free-ai-tools-for-content-creators", "best-ai-tools-for-tiktok-and-reels-creators"]
+relatedGuides: ["free-ai-tools-for-content-creators", "best-ai-tools-for-tiktok-and-reels-creators", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:

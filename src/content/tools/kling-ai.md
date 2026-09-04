@@ -44,7 +44,7 @@ ourTestPrompts: []
 pros: []
 cons: []
 alternatives: ["runway", "google-veo-3", "luma-dream-machine", "pika"]
-relatedGuides: ["best-ai-video-generator-for-youtube", "best-ai-tools-for-tiktok-and-reels-creators", "free-ai-tools-for-content-creators"]
+relatedGuides: ["best-ai-video-generator-for-youtube", "best-ai-tools-for-tiktok-and-reels-creators", "free-ai-tools-for-content-creators", "ai-creator-stack-2026"]
 isDemo: false
 isSponsored: false
 faq:
